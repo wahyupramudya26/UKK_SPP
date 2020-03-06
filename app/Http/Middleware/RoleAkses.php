@@ -24,6 +24,6 @@ class RoleAkses
         }elseif (auth()->user()->M_Role->nama_role == 'Kepala Sekolah') {
             return redirect()->route('home');
         }
-        return redirect()->route('home')
+        return redirect()->route('home');
     }
 }

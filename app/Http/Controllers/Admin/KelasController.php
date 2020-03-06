@@ -102,5 +102,6 @@ class KelasController extends Controller
         $tahun_ajaran->delete();
 
 
-        return redirect()->back()->with('SUKSES','DELETE SUCCESS');
+        return redirect()->back();
     }
+}
