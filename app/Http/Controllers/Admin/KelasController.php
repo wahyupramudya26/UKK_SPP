@@ -14,8 +14,8 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $tahun = \App\M_Tahun_Ajaran::get();
-        return view('admin.tahun_ajaran.index',compact('tahun'));
+        $kelas = \App\M_Kelas::get();
+        return view('admin.kelas.index',compact('kelas'));
     }
 
     /**
@@ -36,7 +36,7 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $tahun = new M_Tahun_Ajaran;
+        $tahun = new M_Kelas;
         $tahun->tahun_ajaran = $request->tahun_ajaran;
         $tahun->status = $request->status;
 
@@ -66,7 +66,7 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        $tahun_ajaran = M_Tahun_Ajaran::find($id);
+        $tahun_ajaran = M_Kelas::find($id);
         return view('admin.tahun_ajaran.edit',compact('tahun_ajaran'));
     }
 
@@ -79,7 +79,7 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tahun_ajaran = M_Tahun_Ajaran::find($id);
+        $tahun_ajaran = M_Kelas::find($id);
         $tahun_ajaran->tahun_ajaran = $request->tahun_ajaran;
         $tahun_ajaran->status = $request->status;
 
@@ -98,7 +98,7 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        $tahun_ajaran = M_Tahun_Ajaran::where('id_tahun',$id)->first();
+        $tahun_ajaran = M_Kelas::where('id_tahun',$id)->first();
         $tahun_ajaran->delete();
 
 

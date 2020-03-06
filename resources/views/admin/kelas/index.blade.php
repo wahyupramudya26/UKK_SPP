@@ -1,103 +1,110 @@
 @extends('layout.main')
+@section('title','Halaman Kelas')
 @push('css')
 <link href="{{asset('admin/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
 <link href="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admin/assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admin/assets/plugins/datatables.net-autofill-bs4/css/autofill.bootstrap4.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admin/assets/plugins/datatables.net-colreorder-bs4/css/colreorder.bootstrap4.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admin/assets/plugins/datatables.net-keytable-bs4/css/keytable.bootstrap4.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admin/assets/plugins/datatables.net-rowreorder-bs4/css/rowreorder.bootstrap4.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admin/assets/plugins/datatables.net-select-bs4/css/select.bootstrap4.min.css')}}" rel="stylesheet" />
 @endpush
 
 @section('content')
+@parent
 <div class="col-xl-12 ui-sortable">
-	<h1 class="page-header">Managed Tables - Extension Combination <small>header small text goes here...</small></h1>
-		<!-- begin panel-body -->
-		<div class="panel-body">
-			<table id="data-table-combine" class="table table-striped table-bordered table-td-valign-middle">
-				<thead>
-					<tr>
-						<th width="1%"></th>
-						<th width="1%" data-orderable="false"></th>
-						<th class="text-nowrap">Rendering engine</th>
-						<th class="text-nowrap">Browser</th>
-						<th class="text-nowrap">Platform(s)</th>
-						<th class="text-nowrap">Engine version</th>
-						<th class="text-nowrap">CSS grade</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="odd gradeX">
-						<td width="1%" class="f-s-600 text-inverse">1</td>
-						<td width="1%" class="with-img"><img src="../assets/img/user/user-1.jpg" class="img-rounded height-30" /></td>
-						<td>Trident</td>
-						<td>Internet Explorer 4.0</td>
-						<td>Win 95+</td>
-						<td>4</td>
-						<td>X</td>
-					</tr>
-					<tr class="gradeC">
-						<td width="1%" class="f-s-600 text-inverse">55</td>
-						<td width="1%" class="with-img"><img src="../assets/img/user/user-13.jpg" class="img-rounded height-30" /></td>
-						<td>Misc</td>
-						<td>IE Mobile</td>
-						<td>Windows Mobile 6</td>
-						<td>-</td>
-						<td>C</td>
-					</tr>
-					<tr class="gradeC">
-						<td width="1%" class="f-s-600 text-inverse">57</td>
-						<td width="1%" class="with-img"><img src="../assets/img/user/user-14.jpg" class="img-rounded height-30" /></td>
-						<td>Misc</td>
-						<td>PSP browser</td>
-						<td>PSP</td>
-						<td>-</td>
-						<td>C</td>
-					</tr>
-					<tr class="gradeU">
-						<td width="1%" class="f-s-600 text-inverse">58</td>
-						<td width="1%" class="with-img"><img src="../assets/img/user/user-1.jpg" class="img-rounded height-30" /></td>
-						<td>Other browsers</td>
-						<td>All others</td>
-						<td>-</td>
-						<td>-</td>
-						<td>U</td>
-					</tr>
-				</tbody>
-			</table>
+	<ol class="breadcrumb float-xl-right">
+		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+		<li class="breadcrumb-item"><a href="javascript:;">Managemen Data</a></li>
+		<li class="breadcrumb-item active">Kelas</li>
+	</ol>
+	<h2 class="page-header">Data Kelas</h2>
+	<!-- begin panel-body -->
+	<div class="panel-body">
+		<div class="panel panel-inverse">
+			<!-- begin panel-heading -->
+			<div class="panel-heading">
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+					[+] Tambah
+				</button>
+			</div>
 		</div>
-		<!-- end panel-body -->
+		<table id="data-table-combine" class="table table-striped table-bordered table-td-valign-middle">
+			<thead>
+				<tr>
+					<th class="text-nowrap">No.</th>
+					<th class="text-nowrap">Nama Kelas</th>
+					<th class="text-nowrap">Kompetensi Kejuruan</th>
+					<th class="text-nowrap" colspan="2">Aksi</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php $no = 1?>
+				@foreach($kelas as $kelas_siswa)
+				<tr>
+					<td>{{$no++}}</td>
+					<td>{{$kelas_siswa->nama_kelas}}</td>
+					<td>{{$kelas_siswa->getKompetensi->kompetensi_kejuruan}}</td>
+					<td>
+						<a href="{{route('kelas.edit',$kelas_siswa->id_tahun)}}">
+							<button class="btn btn-warning"><i class="fa fa-pencil-alt"></i></button>
+						</a>
+					</td>
+					<td>
+						<form action="{{route('kelas.destroy',$kelas_siswa->id_tahun)}}" method="post">
+							{{@csrf_field()}}
+							{{@method_field('DELETE')}}
+							<button class="btn btn-danger" type="submit">
+								<i class="fa fa-trash-alt"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
 	</div>
-
+	<!-- end panel-body -->
 </div>
-@endsection
 
-@push('js')	
-<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-<script src="{{asset('admin/assets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-autofill/js/dataTables.autofill.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-autofill-bs4/js/autofill.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-colreorder/js/dataTables.colreorder.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-colreorder-bs4/js/colreorder.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-keytable/js/dataTables.keytable.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-keytable-bs4/js/keytable.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-rowreorder/js/dataTables.rowreorder.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-rowreorder-bs4/js/rowreorder.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-select/js/dataTables.select.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-select-bs4/js/select.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/pdfmake/build/pdfmake.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/pdfmake/build/vfs_fonts.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/jszip/dist/jszip.min.js')}}"></script>
-<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
-<!-- ================== END PAGE LEVEL JS ================== -->
-@endpush
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Data Tahun Ajaran</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="{{route('tahun_ajaran.store')}}" method="POST">
+					{{@csrf_field()}}
+					<div class="form-group">
+						<label for="">Tahun Ajaran</label>
+						<input type="text" name="tahun_ajaran" class="form-control {{$errors->has('tahun_ajaran') ? 'is_invalid' : ''}} form-control-lg" type="text" name="tahun_ajaran" placeholder="Masukan Tahun Ajaran" value="{{old('tahun_ajaran')}}"/>
+					</div>
+					<div class="form-group">
+						<label>Keterangan</label>
+						<div class="radio radio-css">
+							<input type="radio" id="aktif" name="status" value="aktif" checked>
+							<label for="aktif">Aktif</label><br/><br/>
+							<input type="radio" id="tidak aktif" name="status" value="tidak aktif">
+							<label for="tidak aktif">Tidak Aktif</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	@endsection
+
+	@push('js')	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{{asset('admin/assets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+	<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	@endpush
