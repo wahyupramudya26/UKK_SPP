@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\M_Kelas;
+use App\M_Kompetensi;
 
 class KelasController extends Controller
 {
@@ -14,8 +16,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = \App\M_Kelas::get();
-        return view('admin.kelas.index',compact('kelas'));
+        $kompetensi = M_Kompetensi::get();
+        $kelas = M_Kelas::with('getKompetensi')->get();
+        return view('admin.kelas.index',compact('kelas','kompetensi'));
     }
 
     /**
@@ -36,12 +39,12 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $tahun = new M_Kelas;
-        $tahun->tahun_ajaran = $request->tahun_ajaran;
-        $tahun->status = $request->status;
+        $kelas = new M_Kelas;
+        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->id_kompetensi = $request->id_kompetensi;
 
-        if($tahun->save()){
-            return redirect()->route('tahun_ajaran.index');
+        if($kelas->save()){
+            return redirect()->route('kelas.index');
         }else{
             return redirect()->back();
         }
@@ -66,8 +69,9 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        $tahun_ajaran = M_Kelas::find($id);
-        return view('admin.tahun_ajaran.edit',compact('tahun_ajaran'));
+        $kompetensi = M_Kompetensi::get();
+        $kelas = M_Kelas::find($id);
+        return view('admin.kelas.edit',compact('kelas','kompetensi'));
     }
 
     /**
@@ -79,12 +83,12 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tahun_ajaran = M_Kelas::find($id);
-        $tahun_ajaran->tahun_ajaran = $request->tahun_ajaran;
-        $tahun_ajaran->status = $request->status;
+        $kelas = M_Kelas::find($id);
+        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->id_kompetensi = $request->id_kompetensi;
 
-        if($tahun_ajaran->save()){
-            return redirect()->route('tahun_ajaran.index');
+        if($kelas->save()){
+            return redirect()->route('kelas.index');
         }else{
             return redirect()->back();
         }
@@ -98,8 +102,8 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        $tahun_ajaran = M_Kelas::where('id_tahun',$id)->first();
-        $tahun_ajaran->delete();
+        $kelas = M_Kelas::where('id_kelas',$id)->first();
+        $kelas->delete();
 
 
         return redirect()->back();

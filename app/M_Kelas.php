@@ -13,6 +13,6 @@ class M_Kelas extends Model
     protected $fillable = ['id_kelas','nama_kelas','id_kompetensi'];
 
     public function getKompetensi(){
-        return $this->belongsTo('App\Kompensti','id_kompetensi','id_kompetensi');
+        return $this->belongsTo('App\M_Kompetensi','id_kompetensi','id_kompetensi');
     }
 }

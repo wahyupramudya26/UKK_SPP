@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\M_Kompetensi;
 
 class KompetensiController extends Controller
 {
@@ -14,7 +15,8 @@ class KompetensiController extends Controller
      */
     public function index()
     {
-        //
+        $kompetensi = M_Kompetensi::get();
+        return view('admin.kompetensi.index',compact('kompetensi'));
     }
 
     /**
@@ -35,7 +37,15 @@ class KompetensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kompetensi = new M_Kompetensi;
+        $kompetensi->kompetensi_keahlian= $request->kompetensi;
+    
+
+        if($kompetensi->save()){
+            return redirect()->route('kompetensi.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -57,7 +67,8 @@ class KompetensiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kompetensi = M_Kompetensi::find($id);
+        return view('admin.kompetensi.edit',compact('kompetensi'));
     }
 
     /**
@@ -69,7 +80,14 @@ class KompetensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kompetensi = M_Kompetensi::find($id);
+        $kompetensi->kompetensi_keahlian = $request->kompetensi;
+
+        if($kompetensi->save()){
+            return redirect()->route('kompetensi.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -80,6 +98,10 @@ class KompetensiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kompetensi = M_Kompetensi::where('id_kompetensi',$id)->first();
+        $kompetensi->delete();
+
+
+        return redirect()->back();
     }
 }
