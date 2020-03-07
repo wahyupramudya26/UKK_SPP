@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\M_User;
+use App\M_Role;
 
 class KaryawanController extends Controller
 {
@@ -14,7 +16,8 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        //
+        $user = M_User::with('M_Role')->get();
+        return view('admin.karyawan.index',compact('user'));
     }
 
     /**
@@ -35,7 +38,7 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -57,7 +60,9 @@ class KaryawanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = M_Role::get();
+        $karyawan = M_User::find($id);
+        return view('admin.karyawan.edit',compact('role','karyawan'));
     }
 
     /**
@@ -69,7 +74,16 @@ class KaryawanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $karyawan = M_User::find($id);
+        $karyawan->username = $request->username;
+        $karyawan->nama_karyawan = $request->nama_karyawan;
+        $karyawan->id_role = $request->id_role;
+
+        if($karyawan->save()){
+            return redirect()->route('karyawan.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -80,6 +94,9 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $karyawan = M_User::where('id_karyawan',$id)->first();
+        $karyawan->delete();
+
+        return redirect()->back();
     }
 }
