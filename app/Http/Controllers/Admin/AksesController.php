@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\M_Role;
 
 class AksesController extends Controller
 {
@@ -14,7 +15,8 @@ class AksesController extends Controller
      */
     public function index()
     {
-        //
+        $akses = M_Role::get();
+        return view('admin.akses.index',compact('akses'));
     }
 
     /**
@@ -35,7 +37,14 @@ class AksesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $akses = new M_Role;
+        $akses->nama_role = $request->nama_role;
+
+        if($akses->save()){
+            return redirect()->route('akses.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -57,7 +66,8 @@ class AksesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $akses = M_Role::find($id);
+        return view('admin.akses.edit',compact('akses'));
     }
 
     /**
@@ -69,7 +79,14 @@ class AksesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $akses = M_Role::find($id);
+        $akses->nama_role = $request->nama_role;
+
+        if($akses->save()){
+            return redirect()->route('akses.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -80,6 +97,10 @@ class AksesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $akses = M_Role::where('id_role',$id)->first();
+        $akses->delete();
+
+
+        return redirect()->back()->with('SUKSES','DELETE SUCCESS');
     }
 }

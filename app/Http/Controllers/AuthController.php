@@ -17,7 +17,7 @@ class AuthController extends Controller
     		return redirect()->back();
     	}
 
-    	return redirect()->route('home');
+    	return redirect()->route('dashboard');
     }
 
 	public function getRegister(){
@@ -43,7 +43,7 @@ class AuthController extends Controller
 
     	auth()->loginUsingId($user->id);
 
-    	return redirect()->route('home');
+    	return redirect()->route('dashboard');
     }
 
     public function logout(){

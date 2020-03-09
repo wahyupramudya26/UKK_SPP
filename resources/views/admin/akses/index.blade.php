@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Halaman Tahun Ajaran')
+@section('title','Halaman Hak Akses')
 @push('css')
 <link href="{{asset('admin/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
 <link href="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -11,9 +11,9 @@
 	<ol class="breadcrumb float-xl-right">
 		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
 		<li class="breadcrumb-item"><a href="javascript:;">Managemen Data</a></li>
-		<li class="breadcrumb-item active">Tahun Ajaran</li>
+		<li class="breadcrumb-item active">Hak Akses</li>
 	</ol>
-	<h2 class="page-header">Data Tahun Ajaran</h2>
+	<h2 class="page-header">Data Hak Akses</h2>
 	<!-- begin panel-body -->
 	<div class="panel-body">
 		<div class="panel panel-inverse">
@@ -29,25 +29,23 @@
 			<thead>
 				<tr>
 					<th class="text-nowrap">No.</th>
-					<th class="text-nowrap">Tahun Ajaran</th>
-					<th class="text-nowrap">Status</th>
+					<th class="text-nowrap">Nama Hak Akses</th>
 					<th class="text-nowrap" colspan="2">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php $no = 1?>
-				@foreach($tahun as $tahun_ajaran)
+				@foreach($akses as $akses)
 				<tr>
 					<td>{{$no++}}</td>
-					<td>{{$tahun_ajaran->tahun_ajaran}}</td>
-					<td>{{$tahun_ajaran->status}}</td>
+					<td>{{$akses->nama_role}}</td>
 					<td width="1%">
-						<a href="{{route('tahun_ajaran.edit',$tahun_ajaran->id_tahun)}}">
+						<a href="{{route('akses.edit',$akses->id_role)}}">
 							<button class="btn btn-warning"><i class="fa fa-pencil-alt"> Edit</i></button>
 						</a>
 					</td>
 					<td width="1%">
-						<form action="{{route('tahun_ajaran.destroy',$tahun_ajaran->id_tahun)}}" method="post">
+						<form action="{{route('akses.destroy',$akses->id_role)}}" method="post">
 							{{@csrf_field()}}
 							{{@method_field('DELETE')}}
 							<button class="btn btn-danger" type="submit">
@@ -69,26 +67,17 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Data Tahun Ajaran</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Data Hak Akses</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="{{route('tahun_ajaran.store')}}" method="POST">
+				<form action="{{route('akses.store')}}" method="POST">
 					{{@csrf_field()}}
 					<div class="form-group">
-						<label for="">Tahun Ajaran</label>
-						<input type="text" name="tahun_ajaran" class="form-control {{$errors->has('tahun_ajaran') ? 'is_invalid' : ''}} form-control-lg" type="text" name="tahun_ajaran" placeholder="Masukan Tahun Ajaran" value="{{old('tahun_ajaran')}}"/>
-					</div>
-					<div class="form-group">
-						<label>Keterangan</label>
-						<div class="radio radio-css">
-							<input type="radio" id="aktif" name="status" value="aktif" checked>
-							<label for="aktif">Aktif</label><br/><br/>
-							<input type="radio" id="tidak aktif" name="status" value="tidak aktif">
-							<label for="tidak aktif">Tidak Aktif</label>
-						</div>
+						<label for="">Hak Akses</label>
+						<input type="text" name="nama_role" class="form-control {{$errors->has('nama_role') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Hak Akses" value="{{old('nama_role')}}"/>
 					</div>
 					<div class="modal-footer">
 						<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>

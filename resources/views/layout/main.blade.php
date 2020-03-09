@@ -112,66 +112,13 @@
 				<!-- end sidebar user -->
 				<!-- begin sidebar nav -->
 				<ul class="nav"><li class="nav-header">Navigation</li>
-					<li class="has-sub active">
-						<a href="javascript:;">
-							<b class="caret"></b>
+					<li class="has-sub">
+						<a href="{{route('dashboard')}}">
 							<i class="material-icons">home</i>
 							<span>Dashboard</span>
 						</a>
 					</li>
 					
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="material-icons">toys</i>
-							<span>UI Elements <span class="label label-theme">NEW</span></span> 
-						</a>
-						<ul class="sub-menu">
-							<li><a href="ui_general.html">General <i class="fa fa-paper-plane text-theme"></i></a></li>
-							<li><a href="ui_typography.html">Typography</a></li>
-							<li><a href="ui_tabs_accordions.html">Tabs & Accordions</a></li>
-							<li><a href="ui_unlimited_tabs.html">Unlimited Nav Tabs</a></li>
-							<li><a href="ui_modal_notification.html">Modal & Notification <i class="fa fa-paper-plane text-theme"></i></a></li>
-							<li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
-							<li><a href="ui_media_object.html">Media Object</a></li>
-							<li><a href="ui_buttons.html">Buttons <i class="fa fa-paper-plane text-theme"></i></a></li>
-							<li><a href="ui_icons.html">Icons</a></li>
-							<li><a href="ui_simple_line_icons.html">Simple Line Icons</a></li>
-							<li><a href="ui_ionicons.html">Ionicons</a></li>
-							<li><a href="ui_tree.html">Tree View</a></li>
-							<li><a href="ui_language_bar_icon.html">Language Bar & Icon</a></li>
-							<li><a href="ui_social_buttons.html">Social Buttons</a></li>
-							<li><a href="ui_tour.html">Intro JS</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="bootstrap_4.html">
-							<div class="icon-img">
-								<img src="{{asset('admin/assets/img/logo/logo-bs4.png')}}" alt="" />
-							</div>
-							<span>Bootstrap 4 <span class="label label-theme">NEW</span></span> 
-						</a>
-					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="material-icons">insert_drive_file</i>
-							<span>Form Stuff <span class="label label-theme">NEW</span></span> 
-						</a>
-						<ul class="sub-menu">
-							<li><a href="form_elements.html">Form Elements <i class="fa fa-paper-plane text-theme"></i></a></li>
-							<li><a href="form_plugins.html">Form Plugins <i class="fa fa-paper-plane text-theme"></i></a></li>
-							<li><a href="form_slider_switcher.html">Form Slider + Switcher</a></li>
-							<li><a href="form_validation.html">Form Validation</a></li>
-							<li><a href="form_wizards.html">Wizards</a></li>
-							<li><a href="form_wizards_validation.html">Wizards + Validation</a></li>
-							<li><a href="form_wysiwyg.html">WYSIWYG</a></li>
-							<li><a href="form_editable.html">X-Editable</a></li>
-							<li><a href="form_multiple_upload.html">Multiple File Upload</a></li>
-							<li><a href="form_summernote.html">Summernote</a></li>
-							<li><a href="form_dropzone.html">Dropzone</a></li>
-						</ul>
-					</li>
 					<li class="has-sub">
 						<a href="javascript:;">
 							<b class="caret"></b>
@@ -185,46 +132,36 @@
 							<li><a href="{{route('kompetensi.index')}}">Data Kompetensi</a></li>
 							<li><a href="{{route('akses.index')}}">Data Hak Akses</a></li>
 							<li><a href="{{route('tahun_ajaran.index')}}">Data Tahun Ajaran</a></li>
+							<li><a href="{{route('akses.index')}}">Data Hak Akses</a></li>
 						</ul>
 					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="material-icons">polymer</i>
-							<span>Front End</span>
+
+					<li>
+						<a href="calendar.html">
+							<i class="material-icons">
+								description
+							</i> 
+							<span>Laporan</span>
 						</a>
-						<ul class="sub-menu">
-							<li><a href="https://seantheme.com/color-admin/frontend/one-page-parallax/index.html" target="_blank">One Page Parallax</a></li>
-							<li><a href="https://seantheme.com/color-admin/frontend/blog/index.html" target="_blank">Blog</a></li>
-							<li><a href="https://seantheme.com/color-admin/frontend/forum/index.html" target="_blank">Forum</a></li>
-							<li><a href="https://seantheme.com/color-admin/frontend/e-commerce/index.html" target="_blank">E-Commerce</a></li>
-						</ul>
 					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="material-icons">email</i>
-							<span>Email Template</span>
+					<li>
+						<a href="calendar.html">
+							<i class="material-icons">
+								money
+							</i>
+							<span>Keuangan</span>
 						</a>
-						<ul class="sub-menu">
-							<li><a href="email_system.html">System Template</a></li>
-							<li><a href="email_newsletter.html">Newsletter Template</a></li>
-						</ul>
 					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="material-icons">insert_chart</i>
-							<span>Chart <span class="label label-theme">NEW</span></span>
+
+					<li>
+						<a href="calendar.html">
+							<i class="material-icons">
+								credit_card
+							</i> 
+							<span>Pembayaran Siswa</span>
 						</a>
-						<ul class="sub-menu">
-							<li><a href="chart-flot.html">Flot Chart</a></li>
-							<li><a href="chart-morris.html">Morris Chart</a></li>
-							<li><a href="chart-js.html">Chart JS</a></li>
-							<li><a href="chart-d3.html">d3 Chart</a></li>
-							<li><a href="chart-apex.html">Apex Chart <i class="fa fa-paper-plane text-theme"></i></a></li>
-						</ul>
 					</li>
+
 					<li>
 						<a href="calendar.html">
 							<i class="material-icons">date_range</i> 
@@ -245,7 +182,7 @@
 		<!-- begin #content -->
 		<div id="content" class="content">
 			<!-- begin row -->
-				@yield('content')
+			@yield('content')
 			<!-- end row -->
 		</div>
 		<!-- end #content -->
@@ -278,14 +215,14 @@
 	<script src="{{asset('admin/assets/js/demo/dashboard.js"></script>
 	@stack('js')
 	<!-- ================== END PAGE LEVEL JS ================== -->
-<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-53034621-1', 'auto');
-	  ga('send', 'pageview');
+		ga('create', 'UA-53034621-1', 'auto');
+		ga('send', 'pageview');
 
 	</script>
 
