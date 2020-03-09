@@ -96,22 +96,16 @@
 								<img src="{{asset('admin/assets/img/user/user-14.jpg')}}" alt="" />
 							</div>
 							<div class="info">
-								<b class="caret pull-right"></b>John Smith
+								John Smith
 								<small>Front end developer</small>
 							</div>
 						</a>
 					</li>
-					<li>
-						<ul class="nav nav-profile">
-							<li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
-							<li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
-							<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
-						</ul>
-					</li>
 				</ul>
 				<!-- end sidebar user -->
 				<!-- begin sidebar nav -->
-				<ul class="nav"><li class="nav-header">Navigation</li>
+				<ul class="nav">
+					<li class="nav-header">Navigation</li>
 					<li class="has-sub">
 						<a href="{{route('dashboard')}}">
 							<i class="material-icons">home</i>
@@ -119,6 +113,33 @@
 						</a>
 					</li>
 					
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="far fa-money-bill-alt"></i>
+							<span>Keuangan</span>
+							
+						</a>
+						<ul class="sub-menu">
+							<li><a href="{{route('siswa.index')}}">Pos Keuangan</a></li>
+							<li><a href="{{route('karyawan.index')}}">Jenis Pembayaran</a></li>
+						</ul>
+					</li>
+
+					<li class="has-sub">
+						<a href="javascript:;">
+							<b class="caret"></b>
+							<i class="fas fa-edit"></i>
+							<span>Jurnal Keuangan</span>
+							
+						</a>
+						<ul class="sub-menu">
+							<li><a href="{{route('siswa.index')}}">Pemasukan</a></li>
+							<li><a href="{{route('karyawan.index')}}">Pengeluaran</a></li>
+						</ul>
+					</li>
+
+
 					<li class="has-sub">
 						<a href="javascript:;">
 							<b class="caret"></b>
@@ -136,7 +157,7 @@
 						</ul>
 					</li>
 
-					<li>
+					<li class="has-sub">
 						<a href="calendar.html">
 							<i class="material-icons">
 								description
@@ -144,16 +165,22 @@
 							<span>Laporan</span>
 						</a>
 					</li>
-					<li>
+
+					<li class="has-sub">
 						<a href="calendar.html">
-							<i class="material-icons">
-								money
-							</i>
-							<span>Keuangan</span>
+							<i class="fas fa-info-circle"></i>
+							<span>Identitas</span>
 						</a>
 					</li>
 
-					<li>
+					<li class="has-sub">
+						<a href="calendar.html">
+							<i class="fas fa-database"></i>
+							<span>Pemeliharaan</span>
+						</a>
+					</li>
+
+					<li class="has-sub">
 						<a href="calendar.html">
 							<i class="material-icons">
 								credit_card
@@ -162,7 +189,7 @@
 						</a>
 					</li>
 
-					<li>
+					<li class="has-sub">
 						<a href="calendar.html">
 							<i class="material-icons">date_range</i> 
 							<span>Agenda</span>
