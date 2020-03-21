@@ -61,7 +61,7 @@
 				<li class="dropdown navbar-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<span class="d-none d-md-inline">Hi, {{auth()->user()->nama_karyawan}}</span>
-						<img src="{{asset('images/'.$karyawan->avatar)}}" alt="" /> 
+						<img src="{{asset('images/'.auth()->user()->avatar)}}" alt=""/>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="javascript:;" class="dropdown-item">Edit Profile</a>
@@ -93,7 +93,7 @@
 						<a href="javascript:;" data-toggle="nav-profile">
 							<div class="cover with-shadow"></div>
 							<div class="image">
-								<img src="{{asset('images/'.$karyawan->avatar)}}" alt="" />
+								<img src="{{asset('images/'.auth()->user()->avatar)}}" alt="" />
 							</div>
 							<div class="info">
 								{{auth()->user()->nama_karyawan}}

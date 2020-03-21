@@ -29,7 +29,7 @@
 			</div>
 			<div class="form-group">
 				<label for="">Foto Karyawan</label><br/>
-				<img src="{{asset('images/'.$karyawan->avatar)}}" style=" max-width: 70px; max-height: 70px;">
+				<img src="{{asset('images/'.$karyawan->avatar)}}" style="max-width: 70px; max-height: 70px;">
 				<input type="file" name="avatar" class="form-control {{$errors->has('avatar') ? 'is_invalid' : ''}} form-control-lg"/>
 			</div>
 			<div class="form-group">

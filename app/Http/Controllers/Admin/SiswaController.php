@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\M_Siswa;
+use App\M_Kelas;
+use App\M_Tahun_Ajaran;
+use App\M_Pembayaran;
+use App\M_Identitas;
 
 class SiswaController extends Controller
 {
@@ -14,8 +19,11 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = \App\M_Siswa::get();
-        return view('admin.siswa.index',compact('siswa'));
+        $siswa = M_Siswa::get();
+        $kelas = M_Kelas::get();
+        $tahun = M_Tahun_Ajaran::get();
+        $pembayaran = M_Pembayaran::get();
+        return view('admin.siswa.index',compact('siswa','kelas','tahun','pembayaran'));
     }
 
     /**
@@ -36,7 +44,16 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $siswa = new M_Siswa;
+        $siswa->nisn = $request->nisn;
+        $siswa->nama_lengkap = $request->nama_lengkap;
+        $siswa->id_kelas = $request->id_kelas;
+
+        if($siswa->save()){
+            return redirect()->route('siswa.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -58,7 +75,12 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $siswa = M_Siswa::find($id);
+        $kelas = M_Kelas::get();
+        $nis = M_Identitas::get();
+        $tahun = M_Tahun_Ajaran::get();
+        $pembayaran = M_Pembayaran::get();
+        return view('admin.siswa.edit',compact('siswa','kelas','tahun','pembayaran','nis'));
     }
 
     /**
@@ -70,7 +92,22 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $siswa = M_Siswa::find($id);
+        $siswa->nisn = $request->nisn;
+        $siswa->nis = $request->nis;
+        $siswa->alamat = $request->alamat;
+        $siswa->no_telp = $request->no_telp;
+        $siswa->id_kelas = $request->id_kelas;
+        $siswa->id_tahun = $request->id_tahun;
+        $siswa->username = $request->username;
+        $siswa->password = bcrypt($request->password);
+        $siswa->update();
+        if($request->file('avatar')){
+            $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
+            $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+            $siswa->save();
+        }
+        return redirect()->route('siswa.index');
     }
 
     /**
@@ -81,6 +118,9 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $siswa = M_Siswa::where('nisn',$id)->first();
+        $siswa->delete();
+
+        return redirect()->back();
     }
 }

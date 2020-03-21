@@ -15,4 +15,8 @@ class M_Kelas extends Model
     public function getKompetensi(){
         return $this->belongsTo('App\M_Kompetensi','id_kompetensi','id_kompetensi');
     }
+
+    public function getKelas(){
+    	return $this->hasMany('\App\M_Siswa','id_kelas','id_kelas');
+    }
 }
