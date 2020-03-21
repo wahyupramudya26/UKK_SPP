@@ -78,14 +78,14 @@ class KaryawanController extends Controller
         $karyawan->username = $request->username;
         $karyawan->nama_karyawan = $request->nama_karyawan;
         $karyawan->id_role = $request->id_role;
-
-        if($karyawan->save()){
-            return redirect()->route('karyawan.index');
-        }else{
-            return redirect()->back();
+        $karyawan->update();
+        if($request->file('avatar')){
+            $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
+            $karyawan->avatar = $request->file('avatar')->getClientOriginalName();
+            $karyawan->save();
         }
+        return redirect()->route('karyawan.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *

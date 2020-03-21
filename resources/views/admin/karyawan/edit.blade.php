@@ -16,7 +16,7 @@
 	<h2 class="page-header">Data Karyawan</h2>
 	<!-- begin panel-body -->
 	<div class="panel-body">
-		<form action="{{route('karyawan.update',$karyawan->id_karyawan)}}" method="POST">
+		<form action="{{route('karyawan.update',$karyawan->id_karyawan)}}" method="POST" enctype="multipart/form-data">
 			{{@csrf_field()}}
 			{{@method_field('PUT')}}
 			<div class="form-group">
@@ -28,11 +28,16 @@
 				<input type="text" name="nama_karyawan" class="form-control {{$errors->has('nama_karyawan') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Nama Karyawan" value="{{ $karyawan->nama_karyawan}}"/>
 			</div>
 			<div class="form-group">
+				<label for="">Foto Karyawan</label><br/>
+				<img src="{{asset('images/'.$karyawan->avatar)}}" style=" max-width: 70px; max-height: 70px;">
+				<input type="file" name="avatar" class="form-control {{$errors->has('avatar') ? 'is_invalid' : ''}} form-control-lg"/>
+			</div>
+			<div class="form-group">
 			<label class="control-label">Hak Akses<span class="text-danger">*</span></label>
 				<select class="form-control" name="id_role">
-					<option selected="" value="">Pilih Hak Akses Login</option>
+					<option selected value="null">Pilih Hak Akses Login</option>
 					@foreach($role as $level)
-						<option value="{{$level->id_role}}">{{$level->nama_role}}</option>
+						<option value="{{$level->id_role}}" @if($level->id_role == $level->id_role) selected @endif>{{$level->nama_role}}</option>
 					@endforeach
 				</select>
 			</div>
