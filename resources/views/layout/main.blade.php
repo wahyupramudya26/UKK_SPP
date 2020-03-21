@@ -60,7 +60,7 @@
 			<ul class="navbar-nav navbar-right">
 				<li class="dropdown navbar-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="d-none d-md-inline">Hi,</span>
+						<span class="d-none d-md-inline">Hi, {{auth()->user()->nama_karyawan}}</span>
 						<img src="{{asset('admin/assets/img/user/user-14.jpg')}}" alt="" /> 
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
@@ -96,8 +96,8 @@
 								<img src="{{asset('admin/assets/img/user/user-14.jpg')}}" alt="" />
 							</div>
 							<div class="info">
-								John Smith
-								<small>Front end developer</small>
+								{{auth()->user()->nama_karyawan}}
+								<small>{{auth()->user()->M_Role->nama_role}}</small>
 							</div>
 						</a>
 					</li>

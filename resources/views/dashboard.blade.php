@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-	HELLO WORLD
+	{{auth()->user()->M_Role->nama_role}}
 @endsection
 
 

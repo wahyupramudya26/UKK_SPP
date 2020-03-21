@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('halamanawal');
+});
 
 Route::get('/dashboard','Admin\DashboardController@getDashboard')->name('dashboard');
 Route::get('/register','AuthController@getRegister')->name('register');
@@ -28,7 +28,7 @@ Route::resource('kelas', 'Admin\KelasController');
 Route::resource('kompetensi','Admin\KompetensiController');
 Route::resource('akses', 'Admin\AksesController');
 Route::resource('tahun_ajaran','Admin\Tahun_AjaranController');
-// Route::get('/home', function(){
+// Route::get('/', function(){
 // 	return view('layout.main');
 // })->name('home');
  
