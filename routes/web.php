@@ -28,6 +28,13 @@ Route::resource('kelas', 'Admin\KelasController');
 Route::resource('kompetensi','Admin\KompetensiController');
 Route::resource('akses', 'Admin\AksesController');
 Route::resource('tahun_ajaran','Admin\Tahun_AjaranController');
+Route::resource('pos','Admin\PosController');
+Route::resource('jenis','Admin\JenisController');
+Route::resource('pembayaran','Admin\PembayaranController');
+Route::resource('pemasukan','Admin\PemasukanController');
+Route::resource('pengeluaran','Admin\PengeluaranController');
+Route::resource('agenda','Admin\AgendaController');
+Route::resource('identitas','Admin\IdentitasController');
 // Route::get('/', function(){
 // 	return view('layout.main');
 // })->name('home');

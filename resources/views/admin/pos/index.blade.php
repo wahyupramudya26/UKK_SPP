@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Halaman Kelas')
+@section('title','Halaman Pos Keuangan')
 @push('css')
 <link href="{{asset('admin/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
 <link href="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -11,9 +11,9 @@
 	<ol class="breadcrumb float-xl-right">
 		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
 		<li class="breadcrumb-item"><a href="javascript:;">Managemen Data</a></li>
-		<li class="breadcrumb-item active">Kelas</li>
+		<li class="breadcrumb-item active">Pos Keuangan</li>
 	</ol>
-	<h2 class="page-header">Data Kelas</h2>
+	<h2 class="page-header">Data Pos Keuangan</h2>
 	<!-- begin panel-body -->
 	<div class="panel-body">
 		<div class="panel panel-inverse">
@@ -29,25 +29,25 @@
 			<thead>
 				<tr>
 					<th class="text-nowrap">No.</th>
-					<th class="text-nowrap">Nama Kelas</th>
-					<th class="text-nowrap">Kompetensi Keahlian</th>
+					<th class="text-nowrap">Nama Keuangan</th>
+					<th class="text-nowrap">Keterangan</th>
 					<th class="text-nowrap" colspan="2">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php $no = 1?>
-				@foreach($kelas as $kelas_siswa)
+				@foreach($pos as $pos_keuangan)
 				<tr>
 					<td>{{$no++}}</td>
-					<td>{{$kelas_siswa->nama_kelas}}</td>
-					<td>{{$kelas_siswa->getKompetensi['kompetensi_keahlian']}}</td>
+					<td>{{$pos_keuangan->nama_pos}}</td>
+					<td>{{$pos_keuangan->keterangan}}</td>
 					<td width="1%">
-						<a href="{{route('kelas.edit',$kelas_siswa->id_kelas)}}">
+						<a href="{{route('pos.edit',$pos_keuangan->id_pos)}}">
 							<button class="btn btn-warning"><i class="fa fa-pencil-alt"> Edit</i></button>
 						</a>
 					</td>
 					<td width="1%">
-						<form action="{{route('kelas.destroy',$kelas_siswa->id_kelas)}}" method="post">
+						<form action="{{route('pos.destroy',$pos_keuangan->id_pos)}}" method="post">
 							{{@csrf_field()}}
 							{{@method_field('DELETE')}}
 							<button class="btn btn-danger" type="submit">
@@ -68,31 +68,24 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Data Kelas</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Data Pos Keuangan</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="{{route('kelas.store')}}" method="POST">
+				<form action="{{route('pos.store')}}" method="POST">
 					{{@csrf_field()}}
 					<div class="form-group">
-						<label for="">Nama Kelas</label>
-						<input type="text" name="nama_kelas" class="form-control {{$errors->has('nama_kelas') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Nama Kelas" value="{{old('kelas')}}"/>
+						<label for="">Nama Pos Keuangan</label>
+						<input type="text" name="nama_pos" class="form-control {{$errors->has('nama_pos') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Nama Pos Keuangan" value="{{old('nama_pos')}}"/>
 					</div>
+
 					<div class="form-group">
-						<label class="control-label">Kompetensi Keahlian<span class="text-danger">*</span></label>
-						<div class="row m-b-15">
-							<div class="col-md-12">
-								<select class="form-control" name="id_kompetensi">
-									<option selected="" value="">Pilih Kompetensi Keahlian</option>
-									@foreach($kompetensi as $kompetensi_keahlian)
-										<option value="{{$kompetensi_keahlian->id_kompetensi}}">{{$kompetensi_keahlian->kompetensi_keahlian}}</option>
-									@endforeach
-								</select>
-							</div>
-						</div>			
+						<label for="">Keterangan</label>
+						<input type="text" name="keterangan" class="form-control {{$errors->has('keterangan') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Keterangan" value="{{old('keterangan')}}"/>
 					</div>
+					
 					<div class="modal-footer">
 						<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						<button type="submit" class="btn btn-primary">Save changes</button>

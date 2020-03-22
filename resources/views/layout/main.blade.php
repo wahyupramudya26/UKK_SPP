@@ -50,8 +50,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="index.html" class="navbar-brand">
-					Color Admin Material
+				<a href="{{route('dashboard')}}" class="navbar-brand">
+					SMK INFORMATIKA UTAMA
 				</a>
 			</div>
 			<!-- end navbar-header -->
@@ -65,10 +65,6 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="javascript:;" class="dropdown-item">Edit Profile</a>
-						<a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
-						<a href="javascript:;" class="dropdown-item">Calendar</a>
-						<a href="javascript:;" class="dropdown-item">Setting</a>
-						<div class="dropdown-divider"></div>
 						<a href="{{route('logout')}}" class="dropdown-item">Log Out</a>
 					</div>
 				</li>
@@ -121,8 +117,8 @@
 							
 						</a>
 						<ul class="sub-menu">
-							<li><a href="{{route('siswa.index')}}">Pos Keuangan</a></li>
-							<li><a href="{{route('karyawan.index')}}">Jenis Pembayaran</a></li>
+							<li><a href="{{route('pos.index')}}">Pos Keuangan</a></li>
+							<li><a href="{{route('jenis.index')}}">Jenis Pembayaran</a></li>
 						</ul>
 					</li>
 
@@ -134,8 +130,8 @@
 							
 						</a>
 						<ul class="sub-menu">
-							<li><a href="{{route('siswa.index')}}">Pemasukan</a></li>
-							<li><a href="{{route('karyawan.index')}}">Pengeluaran</a></li>
+							<li><a href="{{route('pemasukan.index')}}">Pemasukan</a></li>
+							<li><a href="{{route('pengeluaran.index')}}">Pengeluaran</a></li>
 						</ul>
 					</li>
 
@@ -151,7 +147,6 @@
 							<li><a href="{{route('karyawan.index')}}">Data Karyawan</a></li>
 							<li><a href="{{route('kelas.index')}}">Data Kelas</a></li>
 							<li><a href="{{route('kompetensi.index')}}">Data Kompetensi</a></li>
-							<li><a href="{{route('akses.index')}}">Data Hak Akses</a></li>
 							<li><a href="{{route('tahun_ajaran.index')}}">Data Tahun Ajaran</a></li>
 							<li><a href="{{route('akses.index')}}">Data Hak Akses</a></li>
 						</ul>
@@ -167,7 +162,7 @@
 					</li>
 
 					<li class="has-sub">
-						<a href="calendar.html">
+						<a href="{{route('identitas.index')}}">
 							<i class="fas fa-info-circle"></i>
 							<span>Identitas</span>
 						</a>
@@ -181,7 +176,7 @@
 					</li>
 
 					<li class="has-sub">
-						<a href="calendar.html">
+						<a href="{{route('pembayaran.index')}}">
 							<i class="material-icons">
 								credit_card
 							</i> 
@@ -190,7 +185,7 @@
 					</li>
 
 					<li class="has-sub">
-						<a href="calendar.html">
+						<a href="{{route('agenda.index')}}">
 							<i class="material-icons">date_range</i> 
 							<span>Agenda</span>
 						</a>

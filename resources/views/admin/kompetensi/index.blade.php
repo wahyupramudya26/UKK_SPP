@@ -21,7 +21,7 @@
 			<div class="panel-heading">
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-					[+] Tambah
+					<i class="fa fa-plus" aria-hidden="true"> Tambah</i> 
 				</button>
 			</div>
 		</div>
