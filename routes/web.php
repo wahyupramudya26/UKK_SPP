@@ -30,13 +30,11 @@ Route::resource('akses', 'Admin\AksesController');
 Route::resource('tahun_ajaran','Admin\Tahun_AjaranController');
 Route::resource('pos','Admin\PosController');
 Route::resource('jenis','Admin\JenisController');
-Route::resource('pembayaran','Admin\PembayaranController');
-Route::resource('pemasukan','Admin\PemasukanController');
-Route::resource('pengeluaran','Admin\PengeluaranController');
-Route::resource('agenda','Admin\AgendaController');
-Route::resource('identitas','Admin\IdentitasController');
-// Route::get('/', function(){
-// 	return view('layout.main');
-// })->name('home');
- 
-// Route::get('/relasi','RelasiController@getUser')->name('data_karyawan');
+Route::get('/setting/{id}','Admin\JenisController@setting')->name('setting');
+Route::get('/create_tarif/{id}','Admin\JenisController@create_tarif')->name('create_tarif');
+Route::put('/update_tarif/{id}','Admin\JenisController@update_tarif')->name('update_tarif');
+// Route::resource('pembayaran','Admin\PembayaranController');
+// Route::resource('pemasukan','Admin\PemasukanController');
+// Route::resource('pengeluaran','Admin\PengeluaranController');
+// Route::resource('agenda','Admin\AgendaController');
+// Route::resource('identitas','Admin\IdentitasController');

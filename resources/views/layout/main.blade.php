@@ -129,10 +129,7 @@
 							<span>Jurnal Keuangan</span>
 							
 						</a>
-						<ul class="sub-menu">
-							<li><a href="{{route('pemasukan.index')}}">Pemasukan</a></li>
-							<li><a href="{{route('pengeluaran.index')}}">Pengeluaran</a></li>
-						</ul>
+						
 					</li>
 
 
@@ -162,10 +159,7 @@
 					</li>
 
 					<li class="has-sub">
-						<a href="{{route('identitas.index')}}">
-							<i class="fas fa-info-circle"></i>
-							<span>Identitas</span>
-						</a>
+						
 					</li>
 
 					<li class="has-sub">
@@ -176,19 +170,11 @@
 					</li>
 
 					<li class="has-sub">
-						<a href="{{route('pembayaran.index')}}">
-							<i class="material-icons">
-								credit_card
-							</i> 
-							<span>Pembayaran Siswa</span>
-						</a>
+						
 					</li>
 
 					<li class="has-sub">
-						<a href="{{route('agenda.index')}}">
-							<i class="material-icons">date_range</i> 
-							<span>Agenda</span>
-						</a>
+						
 					</li>
 					<!-- begin sidebar minify button -->
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
@@ -208,10 +194,6 @@
 			<!-- end row -->
 		</div>
 		<!-- end #content -->
-		
-		<!-- begin theme-panel -->
-		
-		<!-- end theme-panel -->
 		
 		<!-- begin scroll to top btn -->
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
@@ -234,7 +216,7 @@
 	<script src="{{asset('admin/assets/plugins/jvectormap-next/jquery-jvectormap.min.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js')}}"></script>
-	<script src="{{asset('admin/assets/js/demo/dashboard.js"></script>
+	<script src="{{asset('admin/assets/js/demo/dashboard.js')}}"></script>
 	@stack('js')
 	<!-- ================== END PAGE LEVEL JS ================== -->
 	<script>
@@ -247,8 +229,8 @@
 		ga('send', 'pageview');
 
 	</script>
-
 	<!-- @yeild('footer') -->
+	
 </body>
 
 <!-- Mirrored from seantheme.com/color-admin/admin/material/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 29 Feb 2020 11:22:32 GMT -->

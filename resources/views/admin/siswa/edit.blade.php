@@ -153,6 +153,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 			<!-- <div class="form-group">
 				<label for="">NISN</label>
 				<input type="text" name="nisn" class="form-control {{$errors->has('nisn') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan NISN" value="{{old('nisn')}}"/>
@@ -228,17 +229,16 @@
 			</div> -->
 
 			<!-- end panel-body -->
-		</div>
 
 
-		@endsection
+			@endsection
 
-		@push('js')	
-		<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-		<script src="{{asset('admin/assets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-		<script src="{{asset('admin/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-		<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-		<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-		<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
-		<!-- ================== END PAGE LEVEL JS ================== -->
-		@endpush
+			@push('js')	
+			<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+			<script src="{{asset('admin/assets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+			<script src="{{asset('admin/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+			<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+			<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+			<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
+			<!-- ================== END PAGE LEVEL JS ================== -->
+			@endpush

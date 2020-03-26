@@ -10,7 +10,7 @@ class M_Kelas extends Model
     public $primaryKey = 'id_kelas';
     public $timestamps = false;
 
-    protected $fillable = ['id_kelas','nama_kelas','id_kompetensi'];
+    protected $fillable = ['id_kelas','kelas','nama_kelas','id_kompetensi'];
 
     public function getKompetensi(){
         return $this->belongsTo('App\M_Kompetensi','id_kompetensi','id_kompetensi');
@@ -18,5 +18,9 @@ class M_Kelas extends Model
 
     public function getKelas(){
     	return $this->hasMany('\App\M_Siswa','id_kelas','id_kelas');
+    }
+
+    public function get_J_Kelas(){
+        return $this->hasOne('\App\M_Jenis','id_kelas','id_kelas');
     }
 }

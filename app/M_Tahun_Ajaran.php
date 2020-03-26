@@ -14,6 +14,11 @@ class M_Tahun_Ajaran extends Model
 
     public function M_Siswa()
     {
-    	return $this->BelongsTo('\App\M_Siswa','id_tahun','id_tahun');
+    	return $this->belongsTo('\App\M_Siswa','id_tahun','id_tahun');
+    }
+
+    public function getTahun()
+    {
+    	return $this->belongsTo('\App\Jenis','id_tahun','id_tahun');
     }
 }
