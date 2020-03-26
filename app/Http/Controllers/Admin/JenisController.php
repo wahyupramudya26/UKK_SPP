@@ -96,7 +96,7 @@ class JenisController extends Controller
         $jenis->id_pos = $request->id_pos;
         $jenis->id_tahun = $request->id_tahun;
         $jenis->nama_pembayaran = $request->nama_pembayaran;
-        $jenis->type = $request->type;
+        $jenis->tipe = $request->tipe;
         if ($jenis->update()) {
             return redirect()->route('jenis.index');
         }else{

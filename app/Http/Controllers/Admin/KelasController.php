@@ -40,7 +40,7 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $kelas = new M_Kelas;
-        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->kelas = $request->kelas;
         $kelas->id_kompetensi = $request->id_kompetensi;
 
         if($kelas->save()){
@@ -84,7 +84,7 @@ class KelasController extends Controller
     public function update(Request $request, $id)
     {
         $kelas = M_Kelas::find($id);
-        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->kelas = $request->kelas;
         $kelas->id_kompetensi = $request->id_kompetensi;
 
         if($kelas->save()){

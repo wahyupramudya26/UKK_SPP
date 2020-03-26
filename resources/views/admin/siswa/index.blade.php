@@ -42,7 +42,7 @@
 					<td>{{$no++}}</td>
 					<td>{{$s->nisn}}</td>
 					<td>{{$s->nama_lengkap}}</td>
-					<td>{{$s->getKelas->nama_kelas}}</td>
+					<td>{{$s->getKelas->kelas}}</td>
 					<td width="1%">
 						<a href="{{route('siswa.edit',$s->nisn)}}">
 							<button class="btn btn-warning"><i class="fa fa-pencil-alt"> Edit</i></button>
@@ -96,7 +96,7 @@
 								<select class="form-control" name="id_kelas">
 									<option selected value="null">Pilih Kelas Siswa</option>
 									@foreach($kelas as $k)
-									<option value="{{$k->id_kelas}}">{{$k->nama_kelas}}</option>
+									<option value="{{$k->id_kelas}}">{{$k->kelas}}</option>
 									@endforeach
 								</select>
 							</div>

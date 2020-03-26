@@ -43,7 +43,7 @@
 						<div class="form-group row m-b-15 align-items-center">
 							<label class="col-sm-3 col-form-label">NIS</label>
 							<div class="col-sm-9">
-								<input type="text" name="nis" class="form-control {{$errors->has('nis') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan NIS" value="{{$siswa->getNIS->nis}}"/>
+								<input type="text" name="nis" class="form-control {{$errors->has('nis') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan NIS" value="{{$nis[0]->nis}}" readonly />
 							</div>
 						</div>
 
@@ -86,7 +86,7 @@
 								<select class="form-control" name="id_kelas">
 									<option selected value=" ">Pilih Kelas Siswa</option>
 									@foreach($kelas as $k)
-									<option value="{{$k->id_kelas}}">{{$k->nama_kelas}}</option>
+									<option value="{{$k->id_kelas}}">{{$k->kelas}}</option>
 									@endforeach
 								</select>
 							</div>

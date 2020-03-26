@@ -29,7 +29,7 @@
 			<thead>
 				<tr>
 					<th class="text-nowrap">No.</th>
-					<th class="text-nowrap">Nama Kelas</th>
+					<th class="text-nowrap">Kelas</th>
 					<th class="text-nowrap">Kompetensi Keahlian</th>
 					<th class="text-nowrap" colspan="2">Aksi</th>
 				</tr>
@@ -39,7 +39,7 @@
 				@foreach($kelas as $kelas_siswa)
 				<tr>
 					<td>{{$no++}}</td>
-					<td>{{$kelas_siswa->nama_kelas}}</td>
+					<td><a href="">{{$kelas_siswa->kelas}}</a></td>
 					<td>{{$kelas_siswa->getKompetensi['kompetensi_keahlian']}}</td>
 					<td width="1%">
 						<a href="{{route('kelas.edit',$kelas_siswa->id_kelas)}}">
@@ -76,9 +76,9 @@
 			<div class="modal-body">
 				<form action="{{route('kelas.store')}}" method="POST">
 					{{@csrf_field()}}
-					<div class="form-group">
-						<label for="">Nama Kelas</label>
-						<input type="text" name="nama_kelas" class="form-control {{$errors->has('nama_kelas') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Nama Kelas" value="{{old('kelas')}}"/>
+					<div class="form-group field_wrapper">
+						<label for="">Kelas</label>
+						<input type="text" name="kelas" class="form-control {{$errors->has('kelas') ? 'is_invalid' : ''}} form-control-lg" placeholder="Masukan Kelas"/>
 					</div>
 					<div class="form-group">
 						<label class="control-label">Kompetensi Keahlian<span class="text-danger">*</span></label>
@@ -87,7 +87,7 @@
 								<select class="form-control" name="id_kompetensi">
 									<option selected="" value="">Pilih Kompetensi Keahlian</option>
 									@foreach($kompetensi as $kompetensi_keahlian)
-										<option value="{{$kompetensi_keahlian->id_kompetensi}}">{{$kompetensi_keahlian->kompetensi_keahlian}}</option>
+									<option value="{{$kompetensi_keahlian->id_kompetensi}}">{{$kompetensi_keahlian->kompetensi_keahlian}}</option>
 									@endforeach
 								</select>
 							</div>
@@ -110,5 +110,5 @@
 	<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
 	<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
-	@endpush
+<!-- ================== END PAGE LEVEL JS ================== -->
+@endpush

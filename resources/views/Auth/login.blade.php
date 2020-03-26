@@ -61,12 +61,14 @@
 					<form action="{{route('login')}}" method="POST">
 						{{@csrf_field()}}
 						<div class="form-group m-b-15">
-							<input type="text" name="username" class="form-control {{$errors->has('username') ? 'is_invalid' : ''}} form-control-lg" type="text" name="username" placeholder="Masukan USERNAME ANDA" value="{{old('username')}}"/>
+							<input type="text" name="username" class="form-control {{$errors->has('username') ? 'is_invalid' : ''}} form-control-lg" type="text" name="username" placeholder="Username Anda" value="{{old('username')}}"/>
 						</div>
 						<div class="form-group m-b-15">
-							<input type="password" name="password" class="form-control {{$errors->has('password') ? 'is_invalid' : ''}} form-control-lg" placeholder="Masukan Password Anda" value="{{old('username')}}"/>
+							<input type="password" name="password" class="form-control form-password {{$errors->has('password') ? 'is_invalid' : ''}} form-control-lg" placeholder="Password Anda" value="{{old('username')}}"/>
 						</div>
-						
+						<div class="form-group m-b-15">
+							<input type="checkbox" class="form-checkbox"> Tampilkan Password
+						</div>
 						<div class="login-buttons">
 							<button type="submit" class="btn btn-aqua btn-block btn-lg">Sign me in</button>
 						</div>
@@ -85,10 +87,6 @@
 		</div>
 		<!-- end login -->
 		
-		<!-- begin theme-panel -->
-		
-		<!-- end theme-panel -->
-		
 		<!-- begin scroll to top btn -->
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 		<!-- end scroll to top btn -->
@@ -98,15 +96,26 @@
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="{{asset('admin/assets/js/app.min.js')}}"></script>
 	<script src="{{asset('admin/assets/js/theme/material.min.js')}}"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){		
+			$('.form-checkbox').click(function(){
+				if($(this).is(':checked')){
+					$('.form-password').attr('type','text');
+				}else{
+					$('.form-password').attr('type','password');
+				}
+			});
+		});
+	</script>
 	<!-- ================== END BASE JS ================== -->
-<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-53034621-1', 'auto');
-	  ga('send', 'pageview');
+		ga('create', 'UA-53034621-1', 'auto');
+		ga('send', 'pageview');
 
 	</script>
 </body>

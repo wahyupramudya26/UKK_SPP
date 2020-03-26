@@ -132,9 +132,9 @@
 				<label class="control-label">Type<span class="text-danger">*</span></label>
 				<fieldset>
 					<div class="toggle">
-						<input type="radio" name="type" value="bulanan" id="sizeWeight" checked="checked" />
+						<input type="radio" name="tipe" value="Bulanan" id="sizeWeight" checked="checked" />
 						<label for="sizeWeight">Bulanan</label>
-						<input type="radio" name="type" value="bebas" id="sizeDimensions" />
+						<input type="radio" name="tipe" value="Bebas" id="sizeDimensions" />
 						<label for="sizeDimensions">Bebas</label>
 					</div>
 				</fieldset>

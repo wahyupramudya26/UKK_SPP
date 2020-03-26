@@ -51,7 +51,7 @@
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Type Bayar</label>
 							<div class="col-sm-9">
-								<input type="text" name="type" class="form-control {{$errors->has('type') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Nama Pembayaran" value="{{$jenis->tipe}}" readonly/>
+								<input type="text" name="type" class="form-control {{$errors->has('type') ? 'is_invalid' : ''}} form-control-lg" value="{{$jenis->tipe}}" readonly/>
 							</div>
 						</div>
 
@@ -61,7 +61,7 @@
 								<select class="form-control" name="id_kelas">
 									<option selected value=" ">Pilih Kelas Siswa</option>
 									@foreach($kelas as $k)
-									<option value="{{$k->id_kelas}}">{{$k->nama_kelas}}</option>
+									<option value="{{$k->id_kelas}}">{{$k->kelas}}</option>
 									@endforeach
 								</select>
 							</div>

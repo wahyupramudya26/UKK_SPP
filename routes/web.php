@@ -25,6 +25,7 @@ Route::get('/logout','AuthController@logout')->name('logout');
 Route::resource('siswa', 'Admin\SiswaController');
 Route::resource('karyawan','Admin\KaryawanController');
 Route::resource('kelas', 'Admin\KelasController');
+Route::resource('nama_kelas', 'Admin\NamaKelasController');
 Route::resource('kompetensi','Admin\KompetensiController');
 Route::resource('akses', 'Admin\AksesController');
 Route::resource('tahun_ajaran','Admin\Tahun_AjaranController');
