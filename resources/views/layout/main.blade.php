@@ -70,12 +70,6 @@
 				</li>
 			</ul>
 			<!-- end header navigation right -->
-			
-			<div class="search-form">
-				<button class="search-btn" type="submit"><i class="material-icons">search</i></button>
-				<input type="text" class="form-control" placeholder="Search Something..." />
-				<a href="#" class="close" data-dismiss="navbar-search"><i class="material-icons">close</i></a>
-			</div>
 		</div>
 		<!-- end #header -->
 
@@ -104,8 +98,15 @@
 					<li class="nav-header">Navigation</li>
 					<li class="has-sub">
 						<a href="{{route('dashboard')}}">
-							<i class="material-icons">home</i>
+							<i class="fas fa-home"></i>
 							<span>Dashboard</span>
+						</a>
+					</li>
+					
+					<li class="has-sub">
+						<a href="calendar.html">
+							<i class="far fa-credit-card"></i>
+							<span>Pembayaran</span>
 						</a>
 					</li>
 					
@@ -125,18 +126,7 @@
 					<li class="has-sub">
 						<a href="javascript:;">
 							<b class="caret"></b>
-							<i class="fas fa-edit"></i>
-							<span>Jurnal Keuangan</span>
-							
-						</a>
-						
-					</li>
-
-
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="material-icons">grid_on</i>
+							<i class="fas fa-th"></i>
 							<span>Managemen Data</span>
 						</a>
 						<ul class="sub-menu">
@@ -151,15 +141,23 @@
 
 					<li class="has-sub">
 						<a href="calendar.html">
-							<i class="material-icons">
-								description
-							</i> 
+							<i class="fas fa-file-alt"></i>
 							<span>Laporan</span>
 						</a>
 					</li>
 
 					<li class="has-sub">
-						
+						<a href="{{route('agenda.index')}}">
+							<i class="fas fa-calendar-alt"></i>
+							<span>Agenda</span>
+						</a>
+					</li>
+
+					<li class="has-sub">
+						<a href="{{route('dashboard')}}">
+							<i class="fas fa-info-circle"></i>
+							<span>Identitas</span>
+						</a>
 					</li>
 
 					<li class="has-sub">
@@ -167,14 +165,6 @@
 							<i class="fas fa-database"></i>
 							<span>Pemeliharaan</span>
 						</a>
-					</li>
-
-					<li class="has-sub">
-						
-					</li>
-
-					<li class="has-sub">
-						
 					</li>
 					<!-- begin sidebar minify button -->
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>

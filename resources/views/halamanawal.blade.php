@@ -23,7 +23,7 @@
 			<!-- begin container -->
 			<div class="container">
 				<!-- begin navbar-brand -->
-				<a href="index.html" class="navbar-brand">
+				<a href="{{route('halamanawal')}}" class="navbar-brand">
 					<span class="brand-logo"></span>
 					<span class="brand-text">
 						SMK INFORMATIKA UTAMA
@@ -197,7 +197,7 @@
 				<!-- begin col-3 -->
 				<div class="col-md-4 milestone-col">
 					<div class="milestone">
-						<div class="number" data-animation="true" data-animation-type="number" data-final-number="15">15</div>
+						<div class="number" data-animation="true" data-animation-type="number" data-final-number="{{count($karyawan)}}">{{count($karyawan)}}</div>
 						<div class="title">Jumlah Karyawan SMKI UTAMA</div>
 					</div>
 				</div>
@@ -217,16 +217,19 @@
 			<h2 class="content-title">Karyawan</h2>
 			<!-- begin row -->
 			<div class="row">
+				@foreach($karyawan as $pegawai)
 				<!-- begin col-4 -->
 				<div class="col-md-4 col-sm-12">
 					<!-- begin team -->
 					<div class="team">
 						<div class="image" data-animation="true" data-animation-type="flipInX">
-							<img src="../admin/assets/img/user/user-2.jpg" alt="Jonny Cash" />
+							<img src="{{asset('images/'.$pegawai->avatar)}}" alt="" style="max-height: 100%; max-width: 100%; float: right;">
 						</div>
 						<div class="info">
-							<h3 class="name">Johnny Cash</h3>
-							<div class="title text-primary">WEB DEVELOPER</div>
+							<h3 class="name" style="font-weight: bold">{{$pegawai->nama_karyawan}}</h3>
+							<div class="title text-primary">
+								<h5 style="font-weight: bold">{{$pegawai->M_Role->nama_role}}</h5>
+							</div>
 							<p></p>
 							<div class="social">
 								<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
@@ -239,28 +242,7 @@
 					<!-- end team -->
 				</div>
 				<!-- end col-4 -->
-
-				<div class="col-md-4 col-sm-12">
-					<!-- begin team -->
-					<div class="team">
-						<div class="image" data-animation="true" data-animation-type="flipInX">
-							<img src="../admin/assets/img/user/user-2.jpg" alt="Jonny Cash" />
-						</div>
-						<div class="info">
-							<h3 class="name">Johnny Cash</h3>
-							<div class="title text-primary">WEB DEVELOPER</div>
-							<p></p>
-							<div class="social">
-								<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-								<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-								<a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
-							</div>
-						</div>
-					</div>
-					<BR>
-					<!-- end team -->
-				</div>
-				<!-- end col-4 -->
+				@endforeach
 			</div>
 			<!-- end row -->
 		</div>
@@ -302,18 +284,10 @@
 	<!-- begin container -->
 	<div class="container">
 		<h2 class="content-title">Contact Us</h2>
-		<p class="content-desc">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-			sed bibendum turpis luctus eget
-		</p>
 		<!-- begin row -->
 		<div class="row">
 			<!-- begin col-6 -->
 			<div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
-				<h3>If you have a project you would like to discuss, get in touch with us.</h3>
-				<p>
-					Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.
-				</p>
 				<p>
 					<strong>SeanTheme Studio, Inc</strong><br />
 					795 Folsom Ave, Suite 600<br />

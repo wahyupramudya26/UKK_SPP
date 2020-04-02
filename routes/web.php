@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('halamanawal');
-});
-
+// Route::get('/', function () {
+//     return view('halamanawal');
+// });
+Route::get('/','Admin\DashboardController@index')->name('halamanawal');
 Route::get('/dashboard','Admin\DashboardController@getDashboard')->name('dashboard');
 Route::get('/register','AuthController@getRegister')->name('register');
 Route::post('/register','AuthController@postRegister');
@@ -34,8 +34,6 @@ Route::resource('jenis','Admin\JenisController');
 Route::get('/setting/{id}','Admin\JenisController@setting')->name('setting');
 Route::get('/create_tarif/{id}','Admin\JenisController@create_tarif')->name('create_tarif');
 Route::put('/update_tarif/{id}','Admin\JenisController@update_tarif')->name('update_tarif');
-// Route::resource('pembayaran','Admin\PembayaranController');
-// Route::resource('pemasukan','Admin\PemasukanController');
-// Route::resource('pengeluaran','Admin\PengeluaranController');
-// Route::resource('agenda','Admin\AgendaController');
-// Route::resource('identitas','Admin\IdentitasController');
+Route::resource('pembayaran','Admin\PembayaranController');
+Route::resource('agenda','Admin\AgendaController');
+Route::resource('identitas','Admin\IdentitasController');
