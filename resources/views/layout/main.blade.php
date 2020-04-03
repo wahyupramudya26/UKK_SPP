@@ -18,7 +18,6 @@
 	<!-- ================== END BASE CSS STYLE ================== -->
 	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
 	<link href="{{asset('admin/assets/plugins/jvectormap-next/jquery-jvectormap.css')}}" rel="stylesheet" />
-	<link href="{{asset('admin/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
 	<link href="{{asset('admin/assets/plugins/gritter/css/jquery.gritter.css')}}" rel="stylesheet" />
 	@stack('css')
 	<!-- ================== END PAGE LEVEL STYLE ================== -->
@@ -147,13 +146,6 @@
 					</li>
 
 					<li class="has-sub">
-						<a href="{{route('agenda.index')}}">
-							<i class="fas fa-calendar-alt"></i>
-							<span>Agenda</span>
-						</a>
-					</li>
-
-					<li class="has-sub">
 						<a href="{{route('dashboard')}}">
 							<i class="fas fa-info-circle"></i>
 							<span>Identitas</span>
@@ -205,7 +197,6 @@
 	<script src="{{asset('admin/assets/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/jvectormap-next/jquery-jvectormap.min.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js')}}"></script>
 	<script src="{{asset('admin/assets/js/demo/dashboard.js')}}"></script>
 	@stack('js')
 	<!-- ================== END PAGE LEVEL JS ================== -->

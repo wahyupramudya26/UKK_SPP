@@ -34,71 +34,73 @@ var handleCalendarDemo = function() {
 		drop: function() {
 			$(this).remove();
 		},
-		selectable: true,
-		selectHelper: true,
-		select: function(start, end) {
-			var title = prompt('Event Title:');
-			var eventData;
-			if (title) {
-				eventData = {
-					title: title,
-					start: start,
-					end: end
-				};
-				$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-			}
-			$('#calendar').fullCalendar('unselect');
-		},
+		// selectable: false,
+		// selectHelper: true,
+		// select: function(start, end) {
+		// 	var title = prompt('Event Title:');
+		// 	var eventData;
+		// 	if (title) {
+		// 		eventData = {
+		// 			title: title,
+		// 			start: start,
+		// 			end: end
+		// 		};
+		// 		$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+		// 	}
+		// 	$('#calendar').fullCalendar('unselect');
+		// },
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events
-		events: [{
-			title: 'All Day Event',
-			start: currentYear + '-'+ currentMonth +'-01',
-			color: COLOR_GREEN
-		}, {
-			title: 'Long Event',
-			start: currentYear + '-'+ currentMonth +'-07',
-			end: currentYear + '-'+ currentMonth +'-10'
-		}, {
-			id: 999,
-			title: 'Repeating Event',
-			start: currentYear + '-'+ currentMonth +'-09T16:00:00',
-			color: COLOR_GREEN
-		}, {
-			id: 999,
-			title: 'Repeating Event',
-			start: currentYear + '-'+ currentMonth +'-16T16:00:00'
-		}, {
-			title: 'Conference',
-			start: currentYear + '-'+ currentMonth +'-11',
-			end: currentYear + '-'+ currentMonth +'-13'
-		}, {
-			title: 'Meeting',
-			start: currentYear + '-'+ currentMonth +'-12T10:30:00',
-			end: currentYear + '-'+ currentMonth +'-12T12:30:00',
-			color: COLOR_GREEN
-		}, {
-			title: 'Lunch',
-			start: currentYear + '-'+ currentMonth +'-12T12:00:00',
-			color: COLOR_BLUE
-		}, {
-			title: 'Meeting',
-			start: currentYear + '-'+ currentMonth +'-12T14:30:00'
-		}, {
-			title: 'Happy Hour',
-			start: currentYear + '-'+ currentMonth +'-12T17:30:00'
-		}, {
-			title: 'Dinner',
-			start: currentYear + '-'+ currentMonth +'-12T20:00:00'
-		}, {
-			title: 'Birthday Party',
-			start: currentYear + '-'+ currentMonth +'-13T07:00:00'
-		}, {
-			title: 'Click for Google',
-			url: 'http://google.com/',
-			start: currentYear + '-'+ currentMonth +'-28',
-			color: COLOR_RED
-		}]
+		events: [
+		// {
+		// 	title: 'All Day Event',
+		// 	start: currentYear + '-'+ currentMonth +'-01',
+		// 	color: COLOR_GREEN
+		// }, {
+		// 	title: 'Long Event',
+		// 	start: currentYear + '-'+ currentMonth +'-07',
+		// 	end: currentYear + '-'+ currentMonth +'-10'
+		// }, {
+		// 	id: 999,
+		// 	title: 'Repeating Event',
+		// 	start: currentYear + '-'+ currentMonth +'-09T16:00:00',
+		// 	color: COLOR_GREEN
+		// }, {
+		// 	id: 999,
+		// 	title: 'Repeating Event',
+		// 	start: currentYear + '-'+ currentMonth +'-16T16:00:00'
+		// }, {
+		// 	title: 'Conference',
+		// 	start: currentYear + '-'+ currentMonth +'-11',
+		// 	end: currentYear + '-'+ currentMonth +'-13'
+		// }, {
+		// 	title: 'Meeting',
+		// 	start: currentYear + '-'+ currentMonth +'-12T10:30:00',
+		// 	end: currentYear + '-'+ currentMonth +'-12T12:30:00',
+		// 	color: COLOR_GREEN
+		// }, {
+		// 	title: 'Lunch',
+		// 	start: currentYear + '-'+ currentMonth +'-12T12:00:00',
+		// 	color: COLOR_BLUE
+		// }, {
+		// 	title: 'Meeting',
+		// 	start: currentYear + '-'+ currentMonth +'-12T14:30:00'
+		// }, {
+		// 	title: 'Happy Hour',
+		// 	start: currentYear + '-'+ currentMonth +'-12T17:30:00'
+		// }, {
+		// 	title: 'Dinner',
+		// 	start: currentYear + '-'+ currentMonth +'-12T20:00:00'
+		// }, {
+		// 	title: 'Birthday Party',
+		// 	start: currentYear + '-'+ currentMonth +'-13T07:00:00'
+		// }, {
+		// 	title: 'Click for Google',
+		// 	url: 'http://google.com/',
+		// 	start: currentYear + '-'+ currentMonth +'-28',
+		// 	color: COLOR_RED
+		// }
+		]
 	});
 };
 
