@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Exports\SiswaExport;
+use App\Imports\SiswaImport;
 use App\M_Siswa;
 use App\M_Kelas;
 use App\M_Tahun_Ajaran;
@@ -122,5 +125,26 @@ class SiswaController extends Controller
         $siswa->delete();
 
         return redirect()->back();
+    }
+
+    public function siswaExport()
+    {
+        return Excel::download(new SiswaExport,'data-siswa.xlsx');
+        // return (new SiswaExport)->download('data-siswa.xlsx');
+    }
+
+    public function siswaImport(Request $request)
+    {
+         //VALIDASI
+        $this->validate($request, [
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file'); //GET FILE
+            Excel::import(new SiswaImport, $file); //IMPORT FILE 
+            return redirect()->back()->with(['success' => 'Upload success']);
+        }  
+        return redirect()->back()->with(['error' => 'Please choose file before']);
     }
 }

@@ -20,8 +20,12 @@
 			<!-- begin panel-heading -->
 			<div class="panel-heading">
 				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahSiswa">
 					<i class="fa fa-plus" aria-hidden="true"> Tambah</i> 
+				</button>
+				&emsp;
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#exportimport">
+					<i class="fa fa-file-excel" aria-hidden="true"> Export/Import Siswa</i> 
 				</button>
 			</div>
 		</div>
@@ -67,11 +71,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambahSiswa" tabindex="-1" role="dialog" aria-labelledby="tambahSiswa" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Data Siswa</h5>
+				<h5 class="modal-title" id="tambahSiswa">Data Siswa</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -111,6 +115,37 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="exportimport" tabindex="-1" role="dialog" aria-labelledby="export-import" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="export-import">Export/Import Siswa</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="{{route('siswa.import')}}" method="POST" enctype="multipart/form-data">
+					{{@csrf_field()}}
+					<div class="form-group">
+						<a href="{{route('siswa.export')}}"class="btn btn-success"><i class="fa fa-download" aria-hidden="true"> <label>Export Data Siswa</label></i></a>
+					</div>
+					<div class="form-group">
+						<label for="import">Import Data Siswa (.xls, .xlsx)</label>
+						<input type="file" id="import" name="file" class="form-control {{$errors->has('nisn') ? 'is_invalid' : ''}} form-control-lg"/>
+					</div>
+
+					<div class="modal-footer">
+						<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Upload</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 	@endsection
 
 	@push('js')	

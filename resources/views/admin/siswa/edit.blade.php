@@ -43,7 +43,7 @@
 						<div class="form-group row m-b-15 align-items-center">
 							<label class="col-sm-3 col-form-label">NIS</label>
 							<div class="col-sm-9">
-								<input type="text" name="nis" class="form-control {{$errors->has('nis') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan NIS" value="{{$nis[0]->nis}}" readonly />
+								<input type="text" name="nis" class="form-control {{$errors->has('nis') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan NIS" value="1718765" readonly />
 							</div>
 						</div>
 
@@ -86,7 +86,9 @@
 								<select class="form-control" name="id_kelas">
 									<option selected value=" ">Pilih Kelas Siswa</option>
 									@foreach($kelas as $k)
-									<option value="{{$k->id_kelas}}">{{$k->kelas}}</option>
+										<option value="{{$k->id_kelas}}" @if($k->id_kelas == $k->id_kelas) selected @endif>
+											{{$k->kelas}}
+										</option>
 									@endforeach
 								</select>
 							</div>
@@ -147,13 +149,14 @@
 								<button type="submit" class="btn btn-primary">Save changes</button>
 							</div>
 						</div>
-					</form>
+					</div>
+					<!-- end panel-body -->
 				</div>
-				<!-- end panel-body -->
 			</div>
 		</div>
-	</div>
+	</form>
 </div>
+
 			<!-- <div class="form-group">
 				<label for="">NISN</label>
 				<input type="text" name="nisn" class="form-control {{$errors->has('nisn') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan NISN" value="{{old('nisn')}}"/>

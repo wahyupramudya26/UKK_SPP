@@ -19,6 +19,9 @@ Route::get('/','Admin\DashboardController@index')->name('halamanawal');
 Route::group(['middleware' => ['web','auth']], function(){
 	Route::get('/dashboard','Admin\DashboardController@getDashboard')->name('dashboard');
 	Route::get('/logout','AuthController@logout')->name('logout');
+	Route::resource('siswa', 'Admin\SiswaController');
+	Route::get('export','Admin\SiswaController@siswaExport')->name('siswa.export');
+	Route::post('import','Admin\SiswaController@siswaImport')->name('siswa.import');
 });
 
 Route::group(['middleware' => ['web','guest']], function(){
@@ -29,7 +32,8 @@ Route::group(['middleware' => ['web','guest']], function(){
 });
 
 
-Route::resource('siswa', 'Admin\SiswaController');
+
+
 Route::resource('karyawan','Admin\KaryawanController');
 Route::resource('kelas', 'Admin\KelasController');
 Route::resource('nama_kelas', 'Admin\NamaKelasController');
