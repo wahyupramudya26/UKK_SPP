@@ -1,72 +1,44 @@
 @extends('layout.main')
 @section('title','Halaman Siswa')
 @push('css')
-<link href="{{asset('admin/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
+<link rel="stylesheet" href="{{asset('vendor/datatables/datatables.min.css')}}">
+<link rel="stylesheet" href="{{asset('vendor/datatables/Responsive/css/responsive.dataTables.min.css')}}">
 @endpush
 
 @section('content')
 @parent
 <div class="col-xl-12 ui-sortable">
-	<ol class="breadcrumb float-xl-right">
-		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-		<li class="breadcrumb-item"><a href="javascript:;">Managemen Data</a></li>
-		<li class="breadcrumb-item active">Siswa</li>
-	</ol>
-	<h2 class="page-header">Data Siswa</h2>
-	<!-- begin panel-body -->
-	<div class="panel-body">
-		<div class="panel panel-inverse">
-			<!-- begin panel-heading -->
-			<div class="panel-heading">
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahSiswa">
-					<i class="fa fa-plus" aria-hidden="true"> Tambah</i> 
-				</button>
-				&emsp;
-				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#exportimport">
-					<i class="fa fa-file-excel" aria-hidden="true"> Export/Import Siswa</i> 
-				</button>
-			</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4 class="page-title">Data Siswa</h4>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahSiswa">
+				<i class="fa fa-plus" aria-hidden="true"> Tambah</i>
+			</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#exportimport">
+				<i class="fa fa-file-excel" aria-hidden="true"> Export/Import Siswa</i> 
+			</button>
+			<!-- Button trigger modal -->
+		</div>	
+		<!-- begin panel-body -->
+		<div class="panel-body">
+			<table id="datatable" class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>NISN</th>
+						<th>Nama Lengkap</th>
+						<th>Kelas</th>
+						<th>Aksi</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
 		</div>
-		<table id="data-table-combine" class="table table-striped table-bordered table-td-valign-middle">
-			<thead>
-				<tr>
-					<th class="text-nowrap">No.</th>
-					<th class="text-nowrap">NISN</th>
-					<th class="text-nowrap">Nama Lengkap</th>
-					<th class="text-nowrap">Kelas</th>
-					<th class="text-nowrap" colspan="2">Aksi</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php $no = 1?>
-				@foreach($siswa as $s)
-				<tr>
-					<td>{{$no++}}</td>
-					<td>{{$s->nisn}}</td>
-					<td>{{$s->nama_lengkap}}</td>
-					<td>{{$s->getKelas->kelas}}</td>
-					<td width="1%">
-						<a href="{{route('siswa.edit',$s->nisn)}}">
-							<button class="btn btn-warning"><i class="fa fa-pencil-alt"> Edit</i></button>
-						</a>
-					</td>
-					<td width="1%">
-						<form action="{{route('siswa.destroy',$s->nisn)}}" method="post">
-							{{@csrf_field()}}
-							{{@method_field('DELETE')}}
-							<button class="btn btn-danger" type="submit">
-								<i class="fa fa-trash-alt"> Delete</i>
-							</button>
-						</form>
-						
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
 	</div>
+	
 	<!-- end panel-body -->
 </div>
 
@@ -83,17 +55,27 @@
 			<div class="modal-body">
 				<form action="{{route('siswa.store')}}" method="POST">
 					{{@csrf_field()}}
-					<div class="form-group">
+					<div class="form-group {{$errors->has('nisn') ? 'is_invalid' : ''}}">
 						<label for="">NISN</label>
 						<input type="text" name="nisn" class="form-control {{$errors->has('nisn') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan NISN" value="{{old('nisn')}}"/>
+						@if($errors->has('nisn'))
+						<div class="invalid-feedback">
+							{{$errors->first('nisn')}}
+						</div>
+						@endif
 					</div>
 
-					<div class="form-group">
+					<div class="form-group {{$errors->has('nama_lengkap') ? 'is_invalid' : ''}}">
 						<label for="">Nama Lengkap</label>
 						<input type="text" name="nama_lengkap" class="form-control {{$errors->has('nama_lengkap') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Nama Lengkap" value="{{old('nama_lengkap')}}"/>
+						@if($errors->has('nama_lengkap'))
+						<div class="invalid-feedback">
+							{{$errors->first('nama_lengkap')}}
+						</div>
+						@endif
 					</div>
 
-					<div class="form-group">
+					<div class="form-group {{$errors->has('id_kelas') ? 'is_invalid' : ''}}">
 						<label class="control-label">Kelas<span class="text-danger">*</span></label>
 						<div class="row m-b-15">
 							<div class="col-md-12">
@@ -103,6 +85,11 @@
 									<option value="{{$k->id_kelas}}">{{$k->kelas}}</option>
 									@endforeach
 								</select>
+								@if($errors->has('id_kelas'))
+								<div class="invalid-feedback">
+									{{$errors->first('id_kelas')}}
+								</div>
+								@endif
 							</div>
 						</div>			
 					</div>
@@ -146,14 +133,23 @@
 		</div>
 	</div>
 </div>
-	@endsection
-
-	@push('js')	
-	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="{{asset('admin/assets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-	<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
-	@endpush
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('vendor/datatables/Responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('vendor/datatables/DataTables/js/jquery.datatables.min.js')}}"></script>
+<script src="{{asset('vendor/datatables/datatables.min.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>	
+<script>
+	$('#datatable').DataTable({
+		responsive:true,
+		processing:true,
+		serverSide:true,
+		ajax:"{{route('table.siswa')}}",
+		columns:[
+			{data:'nisn',name:'nisn'},
+			{data:'nama_lengkap',name:'nama_lengkap'},
+			{data:'get_kelas.kelas',name:'kelas'},
+			{data:'action',name:'action'}
+		]
+	});
+</script>
+@endsection

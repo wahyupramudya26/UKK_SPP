@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Excel;
+use DataTables;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Exports\SiswaExport;
@@ -67,7 +68,8 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        //
+        $siswa = M_Siswa::findOrFail($id);
+        return view('admin.siswa.show',compact('siswa'));
     }
 
     /**
@@ -98,6 +100,7 @@ class SiswaController extends Controller
         $siswa = M_Siswa::find($id);
         $siswa->nisn = $request->nisn;
         $siswa->nis = $request->nis;
+        $siswa->nama_lengkap = $request->nama_lengkap;
         $siswa->alamat = $request->alamat;
         $siswa->no_telp = $request->no_telp;
         $siswa->id_kelas = $request->id_kelas;
@@ -121,7 +124,7 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        $siswa = M_Siswa::where('nisn',$id)->first();
+        $siswa = M_Siswa::findOrFail($id);
         $siswa->delete();
 
         return redirect()->back();
@@ -146,5 +149,22 @@ class SiswaController extends Controller
             return redirect()->back()->with(['success' => 'Upload success']);
         }  
         return redirect()->back()->with(['error' => 'Please choose file before']);
+    }
+
+    public function dataTable()
+    {
+        $model = M_Siswa::with('getKelas')->get();
+        return DataTables::of($model)
+        ->addColumn('action',function($model){
+            return view('layout._action',[
+                'model' => $model,
+                'url_show' => route('siswa.show',$model->nisn),
+                'url_edit' => route('siswa.edit',$model->nisn),
+                'url_destroy' => route('siswa.destroy',$model->nisn)
+            ]);
+        })
+        ->addIndexColumn()
+        ->rawColumns(['action'])
+        ->make(true);
     }
 }

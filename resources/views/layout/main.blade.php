@@ -8,6 +8,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
@@ -175,6 +176,7 @@
 			@yield('content')
 			<!-- end row -->
 		</div>
+		@include('layout._modal')
 		<!-- end #content -->
 		
 		<!-- begin scroll to top btn -->
@@ -189,29 +191,9 @@
 	<!-- ================== END BASE JS ================== -->
 	
 	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="{{asset('admin/assets/plugins/gritter/js/jquery.gritter.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/flot/jquery.flot.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/flot/jquery.flot.time.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/flot/jquery.flot.resize.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/flot/jquery.flot.pie.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/jvectormap-next/jquery-jvectormap.min.js')}}"></script>
-	<script src="{{asset('admin/assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js')}}"></script>
-	<script src="{{asset('admin/assets/js/demo/dashboard.js')}}"></script>
-	@stack('js')
+	<script src="{{asset('vendor/sweetalert2/sweetalert2.all.min.js')}}"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-53034621-1', 'auto');
-		ga('send', 'pageview');
-
-	</script>
-	<!-- @yeild('footer') -->
-	
+	@stack('js')
 </body>
 
 <!-- Mirrored from seantheme.com/color-admin/admin/material/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 29 Feb 2020 11:22:32 GMT -->

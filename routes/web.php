@@ -20,6 +20,7 @@ Route::group(['middleware' => ['web','auth']], function(){
 	Route::get('/dashboard','Admin\DashboardController@getDashboard')->name('dashboard');
 	Route::get('/logout','AuthController@logout')->name('logout');
 	Route::resource('siswa', 'Admin\SiswaController');
+	Route::get('/table/siswa','Admin\SiswaController@dataTable')->name('table.siswa');
 	Route::get('export','Admin\SiswaController@siswaExport')->name('siswa.export');
 	Route::post('import','Admin\SiswaController@siswaImport')->name('siswa.import');
 });

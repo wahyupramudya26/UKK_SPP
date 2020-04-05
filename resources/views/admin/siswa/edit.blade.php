@@ -57,14 +57,14 @@
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Alamat</label>
 							<div class="col-sm-9">
-								<textarea name="alamat" class="form-control" rows="3"></textarea>
+								<textarea name="alamat" class="form-control" rows="3">{{$siswa->alamat}}</textarea>
 							</div>
 						</div>
 
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">No WhatsApp</label>
 							<div class="col-sm-9">
-								<input type="text" name="no_telp" class="form-control {{$errors->has('no_telp') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan No WhatsApp" value="{{old('no_telp')}}"/>
+								<input type="text" name="no_telp" class="form-control {{$errors->has('no_telp') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan No WhatsApp" value="{{$siswa->no_telp}}"/>
 							</div>
 						</div>
 
@@ -74,7 +74,8 @@
 								<select class="form-control" name="id_tahun">
 									<option selected value=" ">Pilih Tahun Ajaran</option>
 									@foreach($tahun as $tahun_ajaran)
-									<option value="{{$tahun_ajaran->id_tahun}}">{{$tahun_ajaran->tahun_ajaran}}</option>
+									<option value="{{$tahun_ajaran->id_tahun}}"
+										@if($tahun_ajaran->id_tahun == $tahun_ajaran->id_tahun) selected @endif>{{$tahun_ajaran->tahun_ajaran}}</option>
 									@endforeach
 								</select>
 							</div>
@@ -97,14 +98,14 @@
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Username</label>
 							<div class="col-sm-9">
-								<input type="text" name="username" class="form-control {{$errors->has('username') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Username" value="{{old('username')}}"/>
+								<input type="text" name="username" class="form-control {{$errors->has('username') ? 'is_invalid' : ''}} form-control-lg" type="text" placeholder="Masukan Username" value="{{$siswa->username}}"/>
 							</div>
 						</div>
 
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Password</label>
 							<div class="col-sm-9">
-								<input type="password" name="password" class="form-control {{$errors->has('password') ? 'is_invalid' : ''}} form-control-lg" placeholder="Masukan Password" value="{{old('password')}}"/>
+								<input type="password" name="password" class="form-control {{$errors->has('password') ? 'is_invalid' : ''}} form-control-lg" placeholder="Masukan Password"/>
 							</div>
 						</div>
 						<div class="form-group row m-b-15">
@@ -141,7 +142,7 @@
 						</div>
 						<div class="form-group row m-b-15 align-items-center">
 							<label class="col-sm-3 col-form-label">Foto</label>
-							<input type="file" name="avatar" class="form-control {{$errors->has('avatar') ? 'is_invalid' : ''}} form-control-lg" placeholder="Masukan No WhatsApp"/>
+							<input type="file" name="avatar" class="form-control {{$errors->has('avatar') ? 'is_invalid' : ''}} form-control-lg"/>
 						</div>
 						<div class="form-group row m-b-15 align-items-center">
 							<div class="modal-footer">
