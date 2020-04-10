@@ -104,60 +104,70 @@
 						<select class="form-control" name="id_pos">
 							<option selected="" value=" ">Pilih Pos Keuangan</option>
 							@foreach($pos as $pos)
-							<option value="{{$pos->id_pos}}">{{$pos->nama_pos}}</option>
+								<option value="{{$pos->id_pos}}"
+									@if($pos->id_pos === $jenis->id_pos)
+									selected
+									@endif>
+									{{$pos->nama_pos}}
+								</option>
 							@endforeach
-						</select>
-					</div>
-				</div>			
-			</div>
-			<div class="form-group">
-				<label class="control-label">Tahun Ajaran<span class="text-danger">*</span></label>
-				<div class="row m-b-15">
-					<div class="col-md-12">
-						<select class="form-control" name="id_tahun">
-							<option selected="" value=" ">Pilih Tahun Ajaran</option>
-							@foreach($tahun as $tahun)
-							<option value="{{$tahun->id_tahun}}">{{$tahun->tahun_ajaran}}</option>
-							@endforeach
-						</select>
+							</select>
+						</div>
+					</div>			
+				</div>
+				<div class="form-group">
+					<label class="control-label">Tahun Ajaran<span class="text-danger">*</span></label>
+					<div class="row m-b-15">
+						<div class="col-md-12">
+							<select class="form-control" name="id_tahun">
+								<option selected="" value=" ">Pilih Tahun Ajaran</option>
+								@foreach($tahun as $tahun)
+								<option value="{{$tahun->id_tahun}}"
+									@if($tahun->id_tahun === $jenis->id_tahun)
+									selected
+									@endif>
+									{{$tahun->tahun_ajaran}}
+								</option>
+								@endforeach
+							</select>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="form-group">
-				<label class="control-label">Nama Pembayaran<span class="text-danger">*</span></label>
-				<input type="text" name="nama_pembayaran" class="form-control {{$errors->has('nama_pembayaran') ? 'is_invalid' : ''}} form-control-lg" name="nama_pembayaran" placeholder="Nama Pembayaran" value="{{$jenis->nama_pembayaran}}"/>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Type<span class="text-danger">*</span></label>
-				<fieldset>
-					<div class="toggle">
-						<input type="radio" name="tipe" value="Bulanan" id="sizeWeight" checked="checked" />
-						<label for="sizeWeight">Bulanan</label>
-						<input type="radio" name="tipe" value="Bebas" id="sizeDimensions" />
-						<label for="sizeDimensions">Bebas</label>
-					</div>
-				</fieldset>
-			</div>
-			<div class="modal-footer">
-				<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary">Save changes</button>
-			</div>
+				<div class="form-group">
+					<label class="control-label">Nama Pembayaran<span class="text-danger">*</span></label>
+					<input type="text" name="nama_pembayaran" class="form-control {{$errors->has('nama_pembayaran') ? 'is_invalid' : ''}} form-control-lg" name="nama_pembayaran" placeholder="Nama Pembayaran" value="{{$jenis->nama_pembayaran}}"/>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Type<span class="text-danger">*</span></label>
+					<fieldset>
+						<div class="toggle">
+							<input type="radio" name="tipe" value="Bulanan" id="sizeWeight" checked="checked" />
+							<label for="sizeWeight">Bulanan</label>
+							<input type="radio" name="tipe" value="Bebas" id="sizeDimensions" />
+							<label for="sizeDimensions">Bebas</label>
+						</div>
+					</fieldset>
+				</div>
+				<div class="modal-footer">
+					<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
 
-		</form>
+			</form>
+		</div>
+		<!-- end panel-body -->
 	</div>
-	<!-- end panel-body -->
-</div>
 
 
-@endsection
+	@endsection
 
-@push('js')	
-<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-<script src="{{asset('admin/assets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
-<!-- ================== END PAGE LEVEL JS ================== -->
-@endpush
+	@push('js')	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{{asset('admin/assets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+	<script src="{{asset('admin/assets/js/demo/table-manage-combine.demo.js')}}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	@endpush

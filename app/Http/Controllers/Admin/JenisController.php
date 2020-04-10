@@ -8,6 +8,7 @@ use App\M_Jenis;
 use App\M_Tahun_Ajaran;
 use App\M_Pos;
 use App\M_Kelas;
+use App\M_Siswa;
 
 
 class JenisController extends Controller
@@ -32,7 +33,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -63,10 +64,7 @@ class JenisController extends Controller
      */
     public function show($id)
     {
-        // $jenis = M_Jenis::find($id);
-        // $kelas = M_Kelas::get();
-        
-        // return view('admin.jenis.setting',compact('jenis','kelas'));
+
     }
 
     /**
@@ -116,26 +114,34 @@ class JenisController extends Controller
         return redirect()->back();
     }
 
-    public function setting($id){
+    public function setting(Request $request, $id){
        $jenis = M_Jenis::find($id);
-       return view('admin.jenis.setting',compact('jenis')); 
+       $kelas = M_Kelas::get();
+       if($request->has('cari')){
+        $siswa = M_Siswa::when($request->cari,function($query) use ($request){
+            $query->where('id_kelas','LIKE',"%{$request->cari}%");
+        })->get();
+    }else{
+        $siswa = [];
     }
+    return view('admin.jenis.setting',compact('jenis','kelas','siswa')); 
+}
 
-    public function create_tarif($id){
-        $bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-        $jenis = M_Jenis::find($id);
-        $kelas = M_Kelas::get();
-        return view('admin.jenis.create',compact('jenis','bulan','kelas')); 
-    }
+public function create_tarif($id){
+    $bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    $jenis = M_Jenis::find($id);
+    $kelas = M_Kelas::get();
+    return view('admin.jenis.create',compact('jenis','bulan','kelas')); 
+}
 
-    public function update_tarif(Request $request,$id){
-        $jenis = M_Jenis::find($id);
-        $jenis->nominal = $request->nominal;
-        $jenis->id_kelas = $request->id_kelas;
-        if ($jenis->update()) {
-            return redirect()->route('jenis.index');
-        }else{
-            return redirect()->back();
-        }
+public function update_tarif(Request $request,$id){
+    $jenis = M_Jenis::find($id);
+    $jenis->nominal = $request->nominal;
+    $jenis->id_kelas = $request->id_kelas;
+    if ($jenis->update()) {
+        return redirect()->route('jenis.index');
+    }else{
+        return redirect()->back();
     }
+}
 }

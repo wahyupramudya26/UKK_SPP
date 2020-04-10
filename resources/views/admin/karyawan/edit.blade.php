@@ -37,7 +37,12 @@
 				<select class="form-control" name="id_role">
 					<option selected value="null">Pilih Hak Akses Login</option>
 					@foreach($role as $level)
-						<option value="{{$level->id_role}}" @if($level->id_role == $level->id_role) selected @endif>{{$level->nama_role}}</option>
+						<option value="{{$level->id_role}}" 
+							@if($level->id_role === $karyawan->id_role)
+								selected
+							@endif>
+							{{$level->nama_role}}
+						</option>
 					@endforeach
 				</select>
 			</div>

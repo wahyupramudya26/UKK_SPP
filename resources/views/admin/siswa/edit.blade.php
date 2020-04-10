@@ -75,7 +75,9 @@
 									<option selected value=" ">Pilih Tahun Ajaran</option>
 									@foreach($tahun as $tahun_ajaran)
 									<option value="{{$tahun_ajaran->id_tahun}}"
-										@if($tahun_ajaran->id_tahun == $tahun_ajaran->id_tahun) selected @endif>{{$tahun_ajaran->tahun_ajaran}}</option>
+										@if($tahun_ajaran->id_tahun === $siswa->id_tahun) selected @endif>
+										{{$tahun_ajaran->tahun_ajaran}}
+									</option>
 									@endforeach
 								</select>
 							</div>
@@ -87,7 +89,7 @@
 								<select class="form-control" name="id_kelas">
 									<option selected value=" ">Pilih Kelas Siswa</option>
 									@foreach($kelas as $k)
-										<option value="{{$k->id_kelas}}" @if($k->id_kelas == $k->id_kelas) selected @endif>
+										<option value="{{$k->id_kelas}}" @if($k->id_kelas === $siswa->id_kelas) selected @endif>
 											{{$k->kelas}}
 										</option>
 									@endforeach

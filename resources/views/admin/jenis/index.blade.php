@@ -123,7 +123,7 @@
 					<td>{{$jenis_pembayaran->nama_pembayaran}}</td>
 					<td>{{$jenis_pembayaran->getTahun->tahun_ajaran}}</td>
 					<td>
-						<a href="{{route('create_tarif',$jenis_pembayaran->id_jenis)}}">
+						<a href="{{route('setting',$jenis_pembayaran->id_jenis)}}">
 							<button class="btn btn-primary btn-sm"><i class="fa fa-setting"> Setting Tarif Pembayaran</i></button>
 						</a>
 					</td>

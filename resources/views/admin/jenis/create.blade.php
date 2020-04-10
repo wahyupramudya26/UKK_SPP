@@ -85,7 +85,7 @@
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Tarif Bulanan (Rp.)</label>
 							<div class="col-sm-9">
-								<input type="text" class="money" name="nominal" class="form-control {{$errors->has('nominal') ? 'is_invalid' : ''}} form-control-lg" placeholder="Masukan Nominal dan Tekan Enter" style="padding: 6px; width: 100%; border-radius: 5px;"/>
+								<input type="text" class="money" id="nominal" name="nominal" class="form-control {{$errors->has('nominal') ? 'is_invalid' : ''}} form-control-lg" placeholder="Masukan Nominal dan Tekan Enter" style="padding: 6px; width: 100%; border-radius: 5px;"/>
 							</div>
 						</div>
 					</div>
@@ -94,6 +94,7 @@
 			</div>
 
 			<!-- BAGIAN KANAN -->
+			@if($jenis->tipe == 'Bulanan')
 			<div class="col-xl-7 ui-sortable">
 				<div class="panel panel-inverse" data-sortable-id="form-stuff-2" data-init="true" style="">
 					<!-- begin panel-heading -->
@@ -109,6 +110,7 @@
 					<!-- end panel-heading -->
 					<!-- begin panel-body -->
 					<div class="panel-body">
+						<div id="result"></div>
 						@foreach($bulan as $tarif_bulanan)
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">{{$tarif_bulanan}}</label>
@@ -123,6 +125,9 @@
 					<!-- end panel-body -->
 				</div>
 			</div>
+			@elseif($jenis->tipe == 'Bebas')
+				<h1>Hello World</h1>
+			@endif
 		</div>
 	</form>
 </div>
@@ -132,5 +137,8 @@
 <script src="{{asset('admin/assets/js/jquery.mask.js')}}"></script>
 <script>
 	$('.money').mask("#.##0", {reverse: true});
+	$("#nominal").change(function(){
+	    $('input[name="bulan"]').val($(this).val());
+	});
 </script>
 @endpush

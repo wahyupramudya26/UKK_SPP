@@ -46,20 +46,25 @@
 									<select class="form-control" name="id_kompetensi">
 										<option selected="" value=" ">Pilih Kompetensi Keahlian</option>
 										@foreach($kompetensi as $kompetensi_keahlian)
-										<option value="{{$kompetensi_keahlian->id_kompetensi}}">{{$kompetensi_keahlian->kompetensi_keahlian}}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>			
-						</div>
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Update</button>
+										<option value="{{$kompetensi_keahlian->id_kompetensi}}"
+											@if($kompetensi_keahlian->id_kompetensi === $kelas->id_kompetensi)
+												selected
+											@endif>
+										{{$kompetensi_keahlian->kompetensi_keahlian}}
+										</option>
+											@endforeach
+										</select>
+									</div>
+								</div>			
+							</div>
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Update</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
 		<!-- <div class="field_wrapper">
 			<div>
 				<input type="text" name="field_name[]" value=""/>
