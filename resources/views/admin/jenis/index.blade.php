@@ -194,7 +194,7 @@
 						<input type="text" name="nama_pembayaran" class="form-control {{$errors->has('nama_pembayaran') ? 'is_invalid' : ''}} form-control-lg" name="nama_pembayaran" placeholder="Nama Pembayaran" value="{{old('nama_pembayaran')}}"/>
 					</div>
 					<div class="form-group">
-						<label class="control-label">Type<span class="text-danger">*</span></label>
+						<label class="control-label">Tipe<span class="text-danger">*</span></label>
 						<fieldset>
 							<div class="toggle">
 								<input type="radio" name="type" value="bulanan" id="sizeWeight" checked="checked" />

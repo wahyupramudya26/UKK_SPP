@@ -142,9 +142,9 @@
 					<label class="control-label">Type<span class="text-danger">*</span></label>
 					<fieldset>
 						<div class="toggle">
-							<input type="radio" name="tipe" value="Bulanan" id="sizeWeight" checked="checked" />
+							<input type="radio" name="tipe" value="Bulanan" id="sizeWeight" @if($jenis->tipe == 'Bulanan') checked @endif/>
 							<label for="sizeWeight">Bulanan</label>
-							<input type="radio" name="tipe" value="Bebas" id="sizeDimensions" />
+							<input type="radio" name="tipe" value="Bebas" id="sizeDimensions" @if($jenis->tipe == 'Bebas') checked @endif/>
 							<label for="sizeDimensions">Bebas</label>
 						</div>
 					</fieldset>

@@ -109,8 +109,15 @@
 							<span>Pembayaran</span>
 						</a>
 					</li>
-					
+
 					<li class="has-sub">
+						<a href="{{route('setting',$jenis->id_jenis)}}">
+							<i class="far fa-money-bill-alt"></i>
+							<span>Setting Tarif SPP</span>
+						</a>
+					</li>
+					
+					<!-- <li class="has-sub">
 						<a href="javascript:;">
 							<b class="caret"></b>
 							<i class="far fa-money-bill-alt"></i>
@@ -121,7 +128,7 @@
 							<li><a href="{{route('pos.index')}}">Pos Keuangan</a></li>
 							<li><a href="{{route('jenis.index')}}">Jenis Pembayaran</a></li>
 						</ul>
-					</li>
+					</li> -->
 
 					<li class="has-sub">
 						<a href="javascript:;">

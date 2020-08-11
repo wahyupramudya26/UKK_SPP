@@ -64,7 +64,7 @@
 		<!-- begin #home -->
 		<div id="home" class="content has-bg home">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(../admin/assets/img/bg/bg-home.jpg);" 
+			<div class="content-bg" style="background-image: url(../admin/assets/img/bg/smk.jpg);" 
 			data-paroller="true" 
 			data-paroller-factor="0.5"
 			data-paroller-factor-xs="0.25">

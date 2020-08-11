@@ -10,7 +10,7 @@ class M_Jenis extends Model
 	public $primaryKey = 'id_jenis';
 	public $timestamps = false;
 
-	protected $fillable = ['id_jenis','id_pos','id_tahun','nama_pembayaran','type','nominal','id_kelas'];
+	protected $fillable = ['id_jenis','id_pos','id_tahun','nama_pembayaran','tipe','nominal','id_kelas'];
 
 	public function getPos()
 	{

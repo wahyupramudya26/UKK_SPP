@@ -75,7 +75,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<div class="col-xl-12 ui-sortable">
 		<div class="panel panel-inverse" data-sortable-id="form-stuff-2" data-init="true" style="">
 			<!-- begin panel-heading -->
@@ -118,6 +118,5 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 	@endsection

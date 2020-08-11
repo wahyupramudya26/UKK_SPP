@@ -57,14 +57,27 @@
 
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">Kelas</label>
+							@if($jenis->tipe == 'Bulanan')
 							<div class="col-sm-9">
-								<select class="form-control" name="id_kelas">
+								<select class="form-control" name="id_kelas" id="kelas">
 									<option selected value=" ">Pilih Kelas Siswa</option>
 									@foreach($kelas as $k)
 									<option value="{{$k->id_kelas}}">{{$k->kelas}}</option>
 									@endforeach
 								</select>
 							</div>
+							@elseif($jenis->tipe == 'Bebas')
+							<div class="col-sm-9">
+								<select class="form-control id_kelas" name="id_kelas">
+									<option selected value=" ">Pilih Kelas Siswa</option>
+									@foreach($kelas as $k)
+									<option value="{{$k->id_kelas}}">{{$k->kelas}}</option>
+									@endforeach
+								</select>
+								<br/>
+								<button class="btn btn-success button-search" type="button"><i class="fas fa-search"> Cari dan Tampilkan</i></button>
+							</div>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -110,7 +123,6 @@
 					<!-- end panel-heading -->
 					<!-- begin panel-body -->
 					<div class="panel-body">
-						<div id="result"></div>
 						@foreach($bulan as $tarif_bulanan)
 						<div class="form-group row m-b-15">
 							<label class="col-sm-3 col-form-label">{{$tarif_bulanan}}</label>
@@ -119,14 +131,16 @@
 							</div>
 						</div>
 						@endforeach
-						<button type="SUBMIT" class="btn btn-primary btn-block">Save</button>
+						<button type="submit" class="btn btn-primary btn-block">Save</button>
 						<button type="Cancel" class="btn btn-grey btn-block">Cancel</button>
 					</div>
 					<!-- end panel-body -->
 				</div>
 			</div>
 			@elseif($jenis->tipe == 'Bebas')
-				<h1>Hello World</h1>
+			<div class="col-xl-7 ui-sortable container-siswa">
+
+			</div>
 			@endif
 		</div>
 	</form>
@@ -138,7 +152,22 @@
 <script>
 	$('.money').mask("#.##0", {reverse: true});
 	$("#nominal").change(function(){
-	    $('input[name="bulan"]').val($(this).val());
+		$('input[name="bulan"]').val($(this).val());
 	});
+	$("#nominal").change(function(){
+		$('input[name="siswa"]').val($(this).val());
+	});
+	$('.button-search').on('click',function(){
+		$id = $('.id_kelas').val();
+
+		$.ajax({
+			type: 	'get',
+			url: 	'{{route("search")}}',
+			data: 	{'id_kelas':$id},
+			success:function(data){
+				$('.container-siswa').html(data);
+			}
+		})
+	})
 </script>
 @endpush
